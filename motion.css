@@ -74,21 +74,3 @@ html.motion .f2 { animation-delay: -1s; } html.motion .f3 { animation-delay: -2s
   .giant-track { animation: none; }
   .step, .feat, .card, .faq details { transition: none; }
 }
-
-/* Start lights: each capsule lights in the splash's order (every 0.15 s), holds, then all go out
-   together and it starts again. */
-@keyframes start-light { 0% { opacity: 0.14; } 6% { opacity: 1; } 62% { opacity: 1; } 72% { opacity: 0.14; } 100% { opacity: 0.14; } }
-html.motion .lights .lc { animation: start-light 3.2s ease-out infinite; }
-html.motion .lights .c4 { animation-delay: 0s; } html.motion .lights .c5 { animation-delay: 0.15s; }
-html.motion .lights .c2 { animation-delay: 0.3s; } html.motion .lights .c1 { animation-delay: 0.45s; } html.motion .lights .c3 { animation-delay: 0.6s; }
-
-/* Speed lines shoot in once the phone has arrived; scrolling stretches them (motion.js sets --run). */
-@keyframes speed-in { from { opacity: 0; transform: scaleX(0.1); } to { opacity: 0.16; transform: scaleX(1); } }
-html.motion .speed { animation: speed-in 0.7s var(--ease) both; scale: calc(1 + var(--run, 0)) 1; }
-html.motion .sp1 { animation-delay: calc(var(--intro) + 1.1s); } html.motion .sp2 { animation-delay: calc(var(--intro) + 1.2s); } html.motion .sp3 { animation-delay: calc(var(--intro) + 1.3s); }
-
-/* The example: a scan line passes over the photo, then the numbers count up (motion.js). */
-@keyframes scan { 0% { top: 0; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { top: 100%; opacity: 0; } }
-html.motion .demo.in .scan { animation: scan 1.2s ease-in-out 0.2s 2 both; }
-html.motion .demo .demo-result { opacity: 0; transform: translateX(-16px); transition: opacity 0.6s var(--ease) 2.5s, transform 0.6s var(--ease) 2.5s; }
-html.motion .demo.in .demo-result { opacity: 1; transform: none; }
