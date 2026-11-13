@@ -30,29 +30,6 @@
   }, { rootMargin: "0px 0px -10% 0px", threshold: 0.12 });
   document.querySelectorAll(".reveal, .stagger").forEach(function (el) { io.observe(el); });
 
-  // The photo example: after the scan, count its numbers up.
-  var demo = document.querySelector(".demo");
-  if (demo) {
-    var demoNums = demo.querySelectorAll("[data-count]");
-    demoNums.forEach(function (n) { n.textContent = "0"; });
-    var demoIo = new IntersectionObserver(function (entries) {
-      if (!entries[0].isIntersecting) return;
-      demo.classList.add("in");
-      demoIo.disconnect();
-      setTimeout(function () {
-        var t0 = null;
-        function step(t) {
-          if (t0 === null) t0 = t;
-          var p = Math.min(1, (t - t0) / 700), e = 1 - Math.pow(1 - p, 3);
-          demoNums.forEach(function (n) { n.textContent = Math.round(parseInt(n.getAttribute("data-count"), 10) * e); });
-          if (p < 1) requestAnimationFrame(step);
-        }
-        requestAnimationFrame(step);
-      }, 2600);
-    }, { threshold: 0.5 });
-    demoIo.observe(demo);
-  }
-
   // The Today screen: once the phone has arrived, count the numbers up from zero (700 ms, like the
   // approved screen), and move the ring and the bars.
   var show = document.querySelector(".showcase");
@@ -86,11 +63,10 @@
     var wide = window.matchMedia("(min-width: 901px)");
     var ticking = false;
     window.addEventListener("scroll", function () {
-      if (ticking) return;
+      if (!wide.matches || ticking) return;
       ticking = true;
       requestAnimationFrame(function () {
-        if (wide.matches) show.style.translate = "0 " + (-Math.min(window.scrollY, 700) * 0.06) + "px";
-        show.parentNode.style.setProperty("--run", (Math.min(window.scrollY, 600) / 600 * 0.8).toFixed(3));
+        show.style.translate = "0 " + (-Math.min(window.scrollY, 700) * 0.06) + "px";
         ticking = false;
       });
     }, { passive: true });

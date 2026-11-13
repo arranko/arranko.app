@@ -119,12 +119,12 @@ h2.section-title { font-size: clamp(34px, 5.4vw, 56px); margin: 0 0 14px; font-w
 
 /* Home: hero in three columns, phone in the middle */
 .hero { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 0.8fr); gap: 32px; align-items: center; padding: 48px 0 0; position: relative; z-index: 2; }
-.hero h1 { font-weight: 900; font-style: italic; font-stretch: 62%; text-transform: uppercase; letter-spacing: 0; line-height: 0.86; font-size: clamp(78px, 10vw, 150px); }
+.hero h1 { font-weight: 900; font-style: italic; font-stretch: 62%; text-transform: uppercase; letter-spacing: 0; line-height: 0.86; font-size: clamp(72px, 8.6vw, 128px); }
 .hero h1 .words .w { padding-right: 0.1em; margin-right: -0.1em; }
 .hero h1 .accent > span { background: linear-gradient(transparent 58%, var(--lime) 58%, var(--lime) 92%, transparent 92%); }
 .hero h1 .accent { padding-right: 0.06em; }
 .hero .pill-cta { margin-top: 32px; }
-.hero-phone { position: relative; margin: 0 0 -230px; }
+.hero-phone { transform: rotate(8deg); margin: 0 0 -230px; }
 .hero-right { align-self: start; padding-top: 40px; }
 .spark { display: block; width: 36px; height: 36px; margin-bottom: 18px; background: linear-gradient(var(--text), var(--text)) center / 2px 100% no-repeat, linear-gradient(var(--text), var(--text)) center / 100% 2px no-repeat; opacity: 0.35; }
 .hero-lead { font-size: 20px; line-height: 1.5; margin: 0 0 20px; }
@@ -182,7 +182,7 @@ h2.section-title { font-size: clamp(34px, 5.4vw, 56px); margin: 0 0 14px; font-w
 /* Lime band with giant words behind the phone */
 .band-lime {
   position: relative; z-index: 1; background: var(--lime); color: var(--black); border-radius: var(--radius-xl);
-  padding: 260px 40px 48px; overflow: hidden; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 24px 64px;
+  padding: 250px 0 40px; overflow: hidden; display: flex; flex-direction: column; align-items: center;
 }
 .giant { position: absolute; left: 0; right: 0; top: 70px; pointer-events: none; }
 .giant-track { display: flex; width: max-content; }
@@ -199,7 +199,7 @@ h2.section-title { font-size: clamp(34px, 5.4vw, 56px); margin: 0 0 14px; font-w
 /* Statement with floating icons */
 .statement { position: relative; text-align: center; max-width: 900px; margin: 0 auto; padding: clamp(96px, 12vw, 150px) 20px clamp(40px, 6vw, 80px); }
 .statement h2 { margin: 0 0 18px; font-size: clamp(32px, 5vw, 54px); font-weight: 800; letter-spacing: -0.035em; line-height: 1.05; }
-.statement p { color: var(--muted); font-size: 19px; margin: 0 auto; max-width: 620px; }
+.statement p { color: var(--muted); font-size: 19px; margin: 0; }
 .float { position: absolute; width: 76px; height: 64px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; color: var(--text); }
 .float svg { width: 28px; height: 28px; }
 .f1 { left: -60px; top: 70px; transform: rotate(-8deg); }
@@ -332,57 +332,4 @@ th { color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: 0.1
   .cta { display: none; }
   .top { padding-left: 12px; }
   body { font-size: 16px; }
-}
-
-/* ---- What makes it arranko's own (13 Nov): the slanted capsules of the "a", the start lights,
-   the speed lines and a real photo-to-macros example. ---- */
-
-/* Slanted shapes: chips and buttons lean like the capsules of the "a" (skewX -12deg); the
-   shape is drawn behind the text so the words stay upright. */
-.eyebrow, .kicker, .sports span, .cta, .pill-cta { position: relative; isolation: isolate; background: transparent; border-color: transparent; border-radius: 0; }
-.eyebrow::before, .kicker::before, .sports span::before, .cta::before, .pill-cta::before {
-  content: ""; position: absolute; inset: 0; z-index: -1; border-radius: 10px; transform: skewX(-12deg);
-  background: var(--surface); border: 1px solid var(--line);
-}
-.kicker::before { background: var(--soft); border-color: var(--soft); }
-.page-head .eyebrow { background: transparent; color: var(--black); }
-.page-head .eyebrow::before, .cta::before { background: var(--lime); border-color: var(--lime); }
-.cta { padding: 0 22px; }
-.pill-cta { padding: 0 10px 0 28px; }
-.pill-cta span { border-radius: 10px; transform: skewX(-12deg); transition: translate 0.2s; }
-.pill-cta span svg { transform: skewX(12deg); }
-.pill-cta:hover span { transform: skewX(-12deg); translate: 3px 0; }
-.faq summary::after { border-radius: 8px; transform: skewX(-12deg); }
-.sicon, .ficon { border-radius: 14px; }
-
-/* Start lights: the five capsules of the "a", big, lighting up one by one (motion.css). */
-.lights { color: var(--black); line-height: 0; }
-.lights svg { width: clamp(150px, 20vw, 260px); height: auto; overflow: visible; }
-.lights .lc { opacity: 0.14; }
-
-/* Speed lines behind the phone, like the splash's. */
-.speed { position: absolute; right: calc(100% + 18px); height: 12px; border-radius: 6px; background: var(--text); opacity: 0.16; transform-origin: right center; }
-.sp1 { top: 26%; width: 130px; } .sp2 { top: 36%; width: 200px; } .sp3 { top: 46%; width: 90px; }
-
-/* A real example: a photo becomes calories and macros. */
-.demo { margin: 48px auto 0; display: flex; align-items: center; justify-content: center; gap: 22px; flex-wrap: wrap; }
-.demo-photo { position: relative; width: 120px; height: 120px; border-radius: 26px; overflow: hidden; box-shadow: 0 20px 40px rgba(12, 15, 10, 0.18); }
-.demo-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.scan { position: absolute; left: 0; right: 0; top: 0; height: 3px; background: var(--lime); box-shadow: 0 0 14px 4px rgba(219, 255, 0, 0.7); opacity: 0; }
-.demo-ai { display: flex; align-items: center; gap: 10px; color: var(--muted); }
-.demo-ai svg { width: 26px; height: 26px; }
-.ai-chip { position: relative; isolation: isolate; padding: 6px 14px; font-weight: 800; font-size: 15px; color: var(--black); }
-.ai-chip::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--lime); border-radius: 8px; transform: skewX(-12deg); }
-.demo-result { background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 16px 22px; display: flex; flex-direction: column; gap: 2px; text-align: left; font-variant-numeric: tabular-nums; min-width: 230px; }
-.dr-name { font-weight: 600; font-size: 16px; }
-.dr-kcal { font-size: 18px; color: var(--muted); }
-.dr-kcal b { font-weight: 600; font-size: 46px; letter-spacing: -0.03em; color: var(--text); }
-.dr-macros { font-size: 15px; color: var(--muted); }
-.dr-macros b { color: var(--text); font-weight: 700; }
-
-@media (max-width: 760px) {
-  .speed { display: none; }
-  .band-lime { padding: 240px 20px 40px; }
-  .demo-ai svg { transform: rotate(90deg); }
-  .demo { flex-direction: column; }
 }
