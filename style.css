@@ -135,9 +135,24 @@ h2.section-title { font-size: clamp(34px, 5.4vw, 56px); margin: 0 0 14px; font-w
 
 /* The approved Today screen in a phone (light or dark like the page). Sizes are the app's own
    (a 390 x 844 screen), scaled with --s. */
-.showcase { --s: 0.72; position: relative; width: calc(410px * var(--s)); height: calc(864px * var(--s)); margin: 0; }
-.phone { position: absolute; inset: 0; border-radius: calc(60px * var(--s)); background: var(--frame); box-shadow: 0 50px 100px rgba(12, 15, 10, 0.30); }
+.showcase { --s: 0.72; position: relative; width: calc(410px * var(--s)); height: calc(864px * var(--s)); margin: 0; text-align: left; }
+/* An iPhone: titanium band, black bezel, Dynamic Island, status bar and side buttons. */
+.phone {
+  position: absolute; inset: 0; border-radius: calc(62px * var(--s));
+  background: linear-gradient(140deg, #5B5B5F 0%, #2C2C2E 22%, #1C1C1E 50%, #3A3A3C 80%, #5B5B5F 100%);
+  box-shadow: 0 50px 100px rgba(12, 15, 10, 0.30);
+}
+.phone::before { content: ""; position: absolute; inset: calc(3px * var(--s)); border-radius: calc(59px * var(--s)); background: #050505; }
 .phone::after { content: ""; position: absolute; inset: calc(10px * var(--s)); border-radius: calc(52px * var(--s)); background: var(--scr-bg); }
+.ib { position: absolute; width: calc(4px * var(--s)); border-radius: calc(2px * var(--s)); background: linear-gradient(90deg, #2C2C2E, #5B5B5F); }
+.ib-action { left: calc(-3px * var(--s)); top: calc(118px * var(--s)); height: calc(32px * var(--s)); }
+.ib-up { left: calc(-3px * var(--s)); top: calc(176px * var(--s)); height: calc(62px * var(--s)); }
+.ib-down { left: calc(-3px * var(--s)); top: calc(252px * var(--s)); height: calc(62px * var(--s)); }
+.ib-power { right: calc(-3px * var(--s)); top: calc(210px * var(--s)); height: calc(96px * var(--s)); background: linear-gradient(90deg, #5B5B5F, #2C2C2E); }
+.t-status { position: absolute; top: 0; left: 0; right: 0; height: 52px; display: flex; align-items: center; justify-content: space-between; padding: 4px 28px 0 44px; color: var(--scr-text); }
+.t-time { font-weight: 600; font-size: 17px; letter-spacing: -0.01em; }
+.t-island { position: absolute; left: 50%; top: 11px; width: 124px; height: 36px; margin-left: -62px; border-radius: 18px; background: #000; }
+.t-icons { display: flex; align-items: center; gap: 6px; }
 .layer {
   position: absolute; left: calc(10px * var(--s)); top: calc(10px * var(--s)); width: 390px; height: 844px;
   transform: scale(var(--s)); transform-origin: 0 0; color: var(--scr-text);
@@ -362,4 +377,50 @@ th { color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: 0.1
   .cta { display: none; }
   .top { padding-left: 12px; }
   body { font-size: 16px; }
+}
+
+/* ---- Hero, centred (founder, 13 Nov): label, headline with an arrow capsule, text, badges,
+   then a fan of three phones (light, the page's mode, dark) going into the lime band. ---- */
+.hero { display: block; text-align: center; padding: 56px 0 0; overflow-x: clip; }
+.hero-text { max-width: 920px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+.hero h1 { font-size: clamp(60px, 9vw, 132px); line-height: 0.9; }
+.hero-pill {
+  display: inline-block; position: relative; width: 1.7em; height: 0.62em; border-radius: 999px;
+  background: var(--lime); vertical-align: 0.06em; margin: 0 0.06em 0 0.1em;
+}
+.hp-dot {
+  position: absolute; top: 0.06em; left: calc(100% - 0.56em); width: 0.5em; height: 0.5em; border-radius: 50%;
+  background: var(--black); color: var(--lime); display: flex; align-items: center; justify-content: center;
+}
+.hp-dot svg { width: 0.3em; height: 0.3em; }
+.hero-sub { max-width: 640px; margin: 28px auto 0; }
+.hero-sub .hero-lead { margin: 0 0 18px; }
+.hero-sub .sports { justify-content: center; }
+.hero-soon { margin-top: 28px; }
+.hero-soon .badges { justify-content: center; }
+.hero-fan { position: relative; height: 660px; margin: 48px auto -300px; max-width: 980px; }
+.fan { position: absolute; left: 50%; bottom: 0; }
+.fan-center { z-index: 3; transform: translateX(-50%); }
+.fan-left { z-index: 2; transform: translateX(calc(-50% - 270px)) translateY(60px) rotate(-12deg); }
+.fan-right { z-index: 2; transform: translateX(calc(-50% + 270px)) translateY(60px) rotate(12deg); }
+.fan-left .showcase, .fan-right .showcase { --s: 0.64; }
+
+/* Each side phone keeps its own mode whatever the page's mode. */
+.force-light {
+  --scr-bg: #FFFFFF; --scr-text: #0C0F0A; --scr-muted: #5E635A; --scr-card: #F4F5F0; --scr-macro: #0C0F0A; --scr-flame: #0C0F0A;
+  --scr-glass: rgba(255, 255, 255, 0.72); --scr-edge: rgba(12, 15, 10, 0.08); --scr-lens: rgba(12, 15, 10, 0.07); --scr-tab: #3A3F37;
+  --tile: #0C0F0A; --tile-mark: #DBFF00; --frame: #0C0F0A;
+}
+.force-dark {
+  --scr-bg: #0C0F0A; --scr-text: #FFFFFF; --scr-muted: #A6ABA2; --scr-card: #1A1D18; --scr-macro: #1A1D18; --scr-flame: #DBFF00;
+  --scr-glass: rgba(26, 29, 24, 0.72); --scr-edge: rgba(255, 255, 255, 0.10); --scr-lens: rgba(255, 255, 255, 0.14); --scr-tab: #C9CCC5;
+  --tile: #DBFF00; --tile-mark: #0C0F0A; --frame: #33382F;
+}
+@media (max-width: 760px) {
+  .hero { padding: 32px 20px 0; margin: 0 -20px; }
+  .hero-fan { height: 510px; margin: 36px auto -230px; }
+  .fan-left { transform: translateX(calc(-50% - 120px)) translateY(50px) rotate(-12deg); }
+  .fan-right { transform: translateX(calc(-50% + 120px)) translateY(50px) rotate(12deg); }
+  .fan-center .showcase { --s: 0.56; }
+  .fan-left .showcase, .fan-right .showcase { --s: 0.46; }
 }

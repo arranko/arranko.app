@@ -48,7 +48,7 @@
 
   // The Today screen: once the phone has arrived, count the numbers up from zero (700 ms, like the
   // approved screen), and move the ring and the bars.
-  var show = document.querySelector(".showcase");
+  var show = document.querySelector(".showcase.main");
   if (show) {
     var start = (d.classList.contains("splashing") ? 3050 : 150) + 1300;
     var nums = show.querySelectorAll("[data-count]");
