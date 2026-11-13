@@ -80,13 +80,13 @@ BODY_FILE = {"home": "index", "privacy": {"es": "privacidad", "en": "privacy"}, 
              "support": {"es": "ayuda", "en": "support"}, "delete": {"es": "borrar-cuenta", "en": "delete-account"}, "404": "404"}
 
 T = {
-    "es": {"legal": [("privacy", "Privacidad"), ("terms", "Términos"), ("support", "Ayuda"), ("delete", "Borrar cuenta")],
+    "es": {"legal": [("privacy", "Política de privacidad"), ("terms", "Términos de uso"), ("support", "Ayuda"), ("delete", "Borrar tu cuenta")],
            "menu": [("#como-funciona", "Cómo funciona"), ("#funciones", "Funciones"), ("#preguntas", "Preguntas")],
            "cta": "Síguenos", "draft": "Borrador: estos textos esperan aprobación.", "toc": "En esta página",
            "updated": "Última actualización", "theme": "Cambiar entre modo claro y oscuro", "other": "EN",
            "other_label": "English", "home": "arranko, inicio",
            "tag": "La app de nutrición con IA: calorías y macros en una foto."},
-    "en": {"legal": [("privacy", "Privacy"), ("terms", "Terms"), ("support", "Support"), ("delete", "Delete account")],
+    "en": {"legal": [("privacy", "Privacy Policy"), ("terms", "Terms of Use"), ("support", "Support"), ("delete", "Delete your account")],
            "menu": [("#how-it-works", "How it works"), ("#features", "Features"), ("#faq", "Questions")],
            "cta": "Follow us", "draft": "Draft: these texts are waiting for approval.", "toc": "On this page",
            "updated": "Last updated", "theme": "Switch between light and dark mode", "other": "ES",
