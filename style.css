@@ -398,7 +398,7 @@ th { color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: 0.1
 .hero-sub .sports { justify-content: center; }
 .hero-soon { margin-top: 28px; }
 .hero-soon .badges { justify-content: center; }
-.hero-fan { position: relative; height: 660px; margin: 48px auto -300px; max-width: 980px; }
+.hero-fan { position: relative; height: 660px; margin: 48px auto 124px; max-width: 980px; }
 .fan { position: absolute; left: 50%; bottom: 0; }
 .fan-center { z-index: 3; transform: translateX(-50%); }
 .fan-left { z-index: 2; transform: translateX(calc(-50% - 270px)) translateY(60px) rotate(-12deg); }
@@ -418,7 +418,7 @@ th { color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: 0.1
 }
 @media (max-width: 760px) {
   .hero { padding: 32px 20px 0; margin: 0 -20px; }
-  .hero-fan { height: 510px; margin: 36px auto -230px; }
+  .hero-fan { height: 510px; margin: 36px auto 100px; }
   .fan-left { transform: translateX(calc(-50% - 120px)) translateY(50px) rotate(-12deg); }
   .fan-right { transform: translateX(calc(-50% + 120px)) translateY(50px) rotate(12deg); }
   .fan-center .showcase { --s: 0.56; }
