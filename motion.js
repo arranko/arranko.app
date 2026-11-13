@@ -12,6 +12,57 @@
     try { localStorage.setItem("arranko-theme", next); } catch (e) {}
   });
 
+  // Phones in the hero: a tap, click, Enter or Space opens the phone big in the middle of the
+  // screen (upright, as large as fits); ✕, a tap outside it or Escape closes it.
+  var fans = document.querySelectorAll(".fan");
+  var closeLabel = d.lang === "es" ? "Cerrar" : "Close";
+  var openLabel = d.lang === "es" ? "Ver esta pantalla en grande" : "See this screen big";
+  function openViewer(fan) {
+    var fig = fan.querySelector(".showcase");
+    if (!fig) return;
+    var clone = fig.cloneNode(true);
+    clone.querySelectorAll("[data-count]").forEach(function (n) { n.textContent = n.getAttribute("data-count"); });
+    var ring = clone.querySelector(".t-ring"); if (ring) ring.setAttribute("stroke-dashoffset", "194.03");
+    var bars = clone.querySelectorAll(".t-bar"), widths = ["75%", "35%", "15.9%"];
+    bars.forEach(function (b, i) { b.setAttribute("width", widths[i] || b.getAttribute("width")); });
+    var s = Math.min(1, (window.innerHeight - 48) / 864, (window.innerWidth - 32) / 410);
+    clone.style.setProperty("--s", s.toFixed(3));
+    clone.removeAttribute("aria-hidden");
+    var v = document.createElement("div");
+    v.className = "viewer";
+    v.setAttribute("role", "dialog");
+    v.setAttribute("aria-modal", "true");
+    v.setAttribute("aria-label", fig.getAttribute("aria-label") || openLabel);
+    var btn = document.createElement("button");
+    btn.className = "viewer-close";
+    btn.type = "button";
+    btn.setAttribute("aria-label", closeLabel);
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+    v.appendChild(clone);
+    v.appendChild(btn);
+    document.body.appendChild(v);
+    var prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    function close() {
+      v.remove();
+      document.body.style.overflow = prevOverflow;
+      document.removeEventListener("keydown", onKey);
+      fan.focus();
+    }
+    function onKey(e) { if (e.key === "Escape") close(); }
+    btn.addEventListener("click", close);
+    v.addEventListener("click", function (e) { if (!clone.contains(e.target)) close(); });
+    document.addEventListener("keydown", onKey);
+    btn.focus();
+  }
+  fans.forEach(function (fan) {
+    fan.setAttribute("tabindex", "0");
+    fan.setAttribute("role", "button");
+    fan.setAttribute("aria-label", openLabel);
+    fan.addEventListener("click", function () { openViewer(fan); });
+    fan.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openViewer(fan); } });
+  });
+
   // The menu button on narrower screens: opens and closes the menu panel; a tapped link,
   // a tap outside or Escape closes it.
   var top = document.querySelector(".top");
@@ -60,6 +111,8 @@
     if (ring) ring.setAttribute("stroke-dashoffset", "314.16");
     bars.forEach(function (b) { b.setAttribute("width", "0%"); });
     setTimeout(function () {
+      var scroller = show.querySelector(".c-scroll");
+      if (scroller && scroller.scrollTo) scroller.scrollTo({ top: 330, behavior: "smooth" });
       if (ring) ring.setAttribute("stroke-dashoffset", ringTo);
       bars.forEach(function (b, i) { b.setAttribute("width", barTo[i]); });
       var t0 = null, dur = 700;
