@@ -23,10 +23,10 @@ LOGO = '<svg viewBox="34 46 134 116" aria-hidden="true" focusable="false">%s</sv
 # head = (eyebrow, h1, lead, show the date) or None for the home page.
 PAGES = {
     "home": {
-        "es": ("index.html", "arranko · Calorías y macros en una foto",
-               "Haz una foto y conoce al instante las calorías y macros de lo que comes.", None, False),
-        "en": ("en/index.html", "arranko · Calories and macros in a photo",
-               "Take a photo and see the calories and macros of what you eat in an instant.", None, False),
+        "es": ("index.html", "arranko · Calorías y macros con IA en una foto",
+               "La app de nutrición con inteligencia artificial: haz una foto y conoce al instante las calorías y macros de lo que comes.", None, False),
+        "en": ("en/index.html", "arranko · Calories and macros with AI, from a photo",
+               "The nutrition app with artificial intelligence: take a photo and see the calories and macros of what you eat in an instant.", None, False),
     },
     "privacy": {
         "es": ("privacidad/index.html", "Política de privacidad · arranko",
@@ -79,13 +79,13 @@ T = {
            "cta": "Síguenos", "draft": "Borrador: estos textos esperan aprobación.", "toc": "En esta página",
            "updated": "Última actualización", "theme": "Cambiar entre modo claro y oscuro", "other": "EN",
            "other_label": "English", "home": "arranko, inicio",
-           "tag": "Calorías y macros en una foto, para quien entrena."},
+           "tag": "La app de nutrición con IA: calorías y macros en una foto."},
     "en": {"legal": [("privacy", "Privacy"), ("terms", "Terms"), ("support", "Support"), ("delete", "Delete account")],
            "menu": [("#how-it-works", "How it works"), ("#features", "Features"), ("#faq", "Questions")],
            "cta": "Follow us", "draft": "Draft: these texts are waiting for approval.", "toc": "On this page",
            "updated": "Last updated", "theme": "Switch between light and dark mode", "other": "ES",
            "other_label": "Español", "home": "arranko, home",
-           "tag": "Calories and macros in a photo, for people who train."},
+           "tag": "The AI nutrition app: calories and macros from a photo."},
 }
 INSTAGRAM = "https://www.instagram.com/arrankoapp/"
 
