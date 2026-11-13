@@ -5,18 +5,18 @@
 :root { --ease: cubic-bezier(0.22, 1, 0.36, 1); --intro: 0.15s; }
 html.splashing { --intro: 3.05s; }
 
-/* Splash: the approved app splash (final design canvas, "Splash · final", dark), same timings.
+/* Splash: the approved app splash (final design canvas, "Splash · final", light), same timings.
    Home page only, once per visit. */
 .splash { display: none; }
 html.splashing .splash {
-  display: flex; position: fixed; inset: 0; z-index: 100; background: #0C0F0A;
+  display: flex; position: fixed; inset: 0; z-index: 100; background: #FFFFFF;
   align-items: center; justify-content: center;
   animation: splash-out 380ms ease-in 2950ms forwards;
 }
 html.splashing body { overflow: hidden; animation: unlock 0s linear 3.3s forwards; }
-.splash-logo { width: 266px; display: flex; align-items: center; gap: 12px; color: #FFFFFF; }
+.splash-logo { width: 266px; display: flex; align-items: center; gap: 12px; color: #0C0F0A; }
 .splash .grp { position: relative; flex-shrink: 0; width: 64px; height: 64px; display: block; transform: translate3d(101px, 0, 0); animation: rev 300ms ease-in-out 1000ms both, glide 1150ms cubic-bezier(.3, .7, .2, 1) 1300ms both; }
-.splash .sbox { position: absolute; inset: 0; border-radius: 20px; background: #DBFF00; display: flex; align-items: center; justify-content: center; }
+.splash .sbox { position: absolute; inset: 0; border-radius: 20px; background: #0C0F0A; display: flex; align-items: center; justify-content: center; }
 .splash .sbox svg { width: 38px; height: 33px; }
 .splash .cap { opacity: .18; animation: light 260ms ease-out both; }
 .splash .c4 { animation-delay: 100ms; } .splash .c5 { animation-delay: 250ms; } .splash .c2 { animation-delay: 400ms; } .splash .c1 { animation-delay: 550ms; } .splash .c3 { animation-delay: 700ms; }
@@ -24,7 +24,7 @@ html.splashing body { overflow: hidden; animation: unlock 0s linear 3.3s forward
 .splash .l { display: inline-block; opacity: 0; animation: letter 600ms cubic-bezier(.25, .6, .25, 1) both; }
 .splash .l1 { animation-delay: 1340ms; } .splash .l2 { animation-delay: 1490ms; } .splash .l3 { animation-delay: 1640ms; } .splash .l4 { animation-delay: 1790ms; } .splash .l5 { animation-delay: 1940ms; } .splash .l6 { animation-delay: 2090ms; } .splash .l7 { animation-delay: 2240ms; }
 .splash .streak-at { position: absolute; right: 100%; width: 0; height: 0; }
-.splash .streak { position: absolute; right: 100%; top: 0; height: 3px; border-radius: 2px; width: 36px; background: #DBFF00; opacity: 0; transform-origin: right center; }
+.splash .streak { position: absolute; right: 100%; top: 0; height: 3px; border-radius: 2px; width: 36px; background: #0C0F0A; opacity: 0; transform-origin: right center; }
 .splash .s1 { animation: streak 620ms ease-out 1320ms both; } .splash .s2 { animation: streak 620ms ease-out 1370ms both; } .splash .s3 { animation: streak 620ms ease-out 1420ms both; }
 @keyframes light { from { opacity: .18; } to { opacity: 1; } }
 @keyframes rev { 0% { transform: translate3d(101px, 0, 0); } 50% { transform: translate3d(108px, 0, 0) scale(.96, 1.03); } 100% { transform: translate3d(101px, 0, 0); } }
@@ -63,18 +63,18 @@ html.motion .stagger > * { opacity: 0; transform: translateY(36px); transition: 
 html.motion .stagger.in > * { opacity: 1; transform: none; }
 
 /* Marquee of sports: always moving (it's decoration), paused for reduced motion. */
-.marquee { overflow: hidden; border-block: 1px solid var(--line); margin-top: clamp(64px, 10vw, 112px); padding: 18px 0; }
+.marquee { overflow: hidden; background: var(--black); border-radius: 999px; margin-top: clamp(48px, 8vw, 80px); padding: 18px 0; }
 .marquee-track { display: flex; width: max-content; animation: marquee 28s linear infinite; }
 .marquee-track span {
   font-weight: 900; font-style: italic; font-stretch: 62%; font-size: clamp(34px, 6vw, 56px); line-height: 1;
-  text-transform: uppercase; padding-right: 40px; white-space: nowrap; color: var(--text);
+  text-transform: uppercase; padding-right: 40px; white-space: nowrap; color: #FFFFFF;
 }
 .marquee-track span:nth-child(even) { color: var(--lime); }
 @keyframes marquee { to { transform: translateX(-50%); } }
 
 /* Hover lift on cards. */
 .card, .links a, .faq details { transition: transform 0.25s var(--ease), border-color 0.2s; }
-@media (hover: hover) { .steps .card:hover, .contact a.card:hover { transform: translateY(-4px); border-color: var(--lime); } }
+@media (hover: hover) { .steps .card:hover, .contact a.card:hover { transform: translateY(-4px); border-color: var(--text); } }
 
 @media (prefers-reduced-motion: reduce) {
   .marquee-track { animation: none; }
