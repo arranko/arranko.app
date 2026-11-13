@@ -101,28 +101,65 @@ h2.section-title { font-size: clamp(32px, 6vw, 52px); margin: 0 0 12px; font-wei
 .store strong { font-size: 18px; font-weight: 600; }
 .stores .note { font-size: 15px; font-weight: 600; }
 
-/* Home: example estimate (an illustration of a result, not a screenshot) */
-.estimate {
-  --text: #FFFFFF; --muted: #A6ABA2; --line: #33382F;
-  background: var(--black); color: var(--text); border-radius: 30px; padding: 26px;
-  box-shadow: 0 30px 80px rgba(0, 33, 24, 0.35); max-width: 400px; justify-self: center; width: 100%;
+/* Home: the approved Today screen (final design canvas, light mode) in a phone, "exploded":
+   the calories card and the macros card lift out of the screen. Sizes are the app's own
+   (a 390 x 844 screen), scaled with --s. */
+.showcase { --s: 0.78; position: relative; width: calc(410px * var(--s)); height: calc(864px * var(--s)); justify-self: center; margin: 0; }
+.phone { position: absolute; inset: 0; border-radius: calc(60px * var(--s)); background: var(--black); box-shadow: 0 40px 90px rgba(0, 33, 24, 0.35); }
+.phone::after { content: ""; position: absolute; inset: calc(10px * var(--s)); border-radius: calc(52px * var(--s)); background: #FFFFFF; }
+.layer {
+  position: absolute; left: calc(10px * var(--s)); top: calc(10px * var(--s)); width: 390px; height: 844px;
+  transform: scale(var(--s)); transform-origin: 0 0; color: var(--black);
+  padding: 52px 20px 0; display: flex; flex-direction: column; gap: 16px; font-variant-numeric: tabular-nums;
 }
-.estimate .row { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
-.estimate .row .icon { width: 44px; height: 44px; border-radius: 14px; background: var(--lime); color: var(--black); display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.estimate .row .icon svg { width: 22px; height: 22px; }
-.estimate .check { margin-left: auto; font-size: 13px; font-weight: 700; color: var(--black); background: var(--sky); padding: 6px 12px; border-radius: 999px; }
-.estimate .label { white-space: nowrap; font-size: 13px; font-weight: 600; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
-.estimate .dish { font-size: 20px; font-weight: 700; margin: 4px 0 14px; }
-.estimate .kcal { display: flex; align-items: baseline; gap: 8px; margin-bottom: 18px; }
-.estimate .kcal strong { font-weight: 600; font-size: 60px; letter-spacing: -0.03em; line-height: 1; color: var(--lime); font-variant-numeric: tabular-nums; }
-.estimate .kcal span { color: var(--muted); font-weight: 600; }
-.macros { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
-.macros div { display: flex; flex-direction: column; gap: 6px; font-variant-numeric: tabular-nums; }
-.macros span { font-size: 13px; color: var(--muted); font-weight: 600; }
-.macros strong { font-size: 20px; font-weight: 800; }
-.macros i { display: block; height: 8px; border-radius: 4px; overflow: hidden; background: repeating-linear-gradient(45deg, #1F231C 0 3.5px, #3A4035 3.5px 6px); }
-.macros i::after { content: ""; display: block; height: 100%; border-radius: 4px; width: var(--w); background: var(--lime); }
-.estimate .hint { margin: 18px 0 0; font-size: 13px; color: var(--muted); }
+.t-top { display: flex; justify-content: space-between; align-items: center; }
+.t-brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 32px; line-height: 1; letter-spacing: -0.01em; }
+.t-tile { width: 44px; height: 44px; border-radius: 14px; background: var(--black); display: flex; align-items: center; justify-content: center; }
+.t-streak { display: flex; align-items: center; gap: 6px; padding: 9px 14px; border-radius: 999px; background: #F4F5F0; font-weight: 700; font-size: 17px; }
+.t-day { display: flex; align-items: center; justify-content: center; gap: 28px; height: 44px; }
+.t-day > svg { width: 44px; }
+.t-day span { min-width: 120px; display: flex; align-items: center; justify-content: center; gap: 6px; font-weight: 600; font-size: 19px; }
+.t-day i { width: 44px; }
+.t-kcal { background: var(--lime); border-radius: 28px; padding: 22px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.t-kcal-text { display: flex; flex-direction: column; gap: 6px; }
+.t-big b { font-weight: 600; font-size: 60px; letter-spacing: -0.03em; line-height: 1; }
+.t-big small { font-weight: 400; font-size: 20px; color: var(--olive); }
+.t-cap { font-size: 14px; font-weight: 500; color: var(--olive); }
+.t-left { font-size: 14px; font-weight: 700; }
+.t-left b { font-weight: 700; }
+.t-macros { background: var(--black); color: #FFFFFF; border-radius: 28px; padding: 20px 20px 22px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.t-macros > div { display: flex; flex-direction: column; gap: 7px; }
+.t-macros > div > span:first-child { font-size: 14px; font-weight: 500; color: #A6ABA2; }
+.t-v b { font-weight: 500; font-size: 19px; }
+.t-v small { font-weight: 400; font-size: 13px; color: #A6ABA2; }
+.t-macros svg { display: block; border-radius: 4px; overflow: hidden; }
+.t-h { font-weight: 600; font-size: 19px; padding-top: 6px; }
+.t-entry { background: #F4F5F0; border-radius: 24px; padding: 12px; display: flex; align-items: center; gap: 14px; }
+.t-ph { position: relative; flex-shrink: 0; }
+.t-ph img { width: 64px; height: 64px; border-radius: 18px; object-fit: cover; display: block; }
+.t-star { position: absolute; right: -6px; bottom: -6px; width: 24px; height: 24px; border-radius: 12px; background: var(--black); display: flex; align-items: center; justify-content: center; }
+.t-info { display: flex; flex-direction: column; gap: 3px; flex-grow: 1; min-width: 0; font-size: 14px; color: #5E635A; }
+.t-info div { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.t-info b { font-size: 17px; font-weight: 600; color: var(--black); }
+.t-info small { font-size: 13px; }
+.t-tabs {
+  position: absolute; left: 20px; right: 20px; bottom: 26px; height: 62px; border-radius: 31px;
+  background: rgba(255, 255, 255, 0.72); border: 1px solid rgba(12, 15, 10, 0.08); box-shadow: 0 6px 24px rgba(0, 0, 0, 0.10);
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: center; padding: 0 5px;
+}
+.t-tabs span { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-size: 10px; font-weight: 600; color: #3A3F37; height: 52px; border-radius: 26px; }
+.t-tabs .on { background: rgba(12, 15, 10, 0.07); color: var(--black); }
+.t-fab { position: absolute; right: 20px; bottom: 102px; width: 62px; height: 62px; border-radius: 31px; background: var(--lime); color: var(--black); display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(12, 15, 10, 0.22); }
+
+/* The exploded view: each lifted card leaves its empty slot behind on the screen. */
+.t-slot { display: none; }
+.pop { position: relative; z-index: 2; box-shadow: 0 30px 60px rgba(0, 33, 24, 0.28); }
+.pop-left { transform: translate(-70px, -6px) rotate(-3deg) scale(1.04); }
+.pop-right { transform: translate(64px, 4px) rotate(2.5deg) scale(1.04); }
+.t-kcal + .t-slot, .t-slot { pointer-events: none; }
+.s-kcal, .s-macros { display: block; position: absolute; left: 20px; right: 20px; border-radius: 28px; border: 2px dashed #C9CCC5; }
+.s-kcal { top: 172px; height: 160px; }
+.s-macros { top: 348px; height: 100px; }
 
 /* Home: sections */
 .section { padding: clamp(64px, 10vw, 112px) 0 0; }
@@ -241,7 +278,9 @@ footer p { margin: 0; }
 
 @media (max-width: 900px) {
   .hero, .promise { grid-template-columns: minmax(0, 1fr); }
-  .estimate { transform: none; }
+  .showcase { --s: 0.66; margin-top: 8px; }
+  .pop-left { transform: translate(-36px, -4px) rotate(-3deg) scale(1.03); }
+  .pop-right { transform: translate(34px, 4px) rotate(2.5deg) scale(1.03); }
   .steps { grid-template-columns: minmax(0, 1fr); }
   .features { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .doc { grid-template-columns: minmax(0, 1fr); gap: 24px; padding-top: 32px; }
@@ -249,9 +288,7 @@ footer p { margin: 0; }
   .contact { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 440px) {
-  .macros { grid-template-columns: minmax(0, 1fr); gap: 12px; }
-  .macros div { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; align-items: baseline; }
-  .macros i { grid-column: 1 / -1; }
+  .showcase { --s: 0.62; }
   .top nav a { padding: 6px 10px; }
 }
 @media (max-width: 560px) {

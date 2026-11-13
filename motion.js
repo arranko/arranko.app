@@ -20,35 +20,44 @@
   }, { rootMargin: "0px 0px -10% 0px", threshold: 0.12 });
   document.querySelectorAll(".reveal, .stagger").forEach(function (el) { io.observe(el); });
 
-  // The example estimate: count the calories up and fill the macro bars once the card has arrived.
-  var card = document.querySelector(".estimate");
-  if (card) {
-    var splashing = d.classList.contains("splashing");
-    var start = (splashing ? 3050 : 150) + 900;
-    var num = card.querySelector("[data-count]");
+  // The Today screen: once the phone has arrived, count the numbers up from zero (700 ms, like the
+  // approved screen), move the ring and the bars, then lift the two cards out.
+  var show = document.querySelector(".showcase");
+  if (show) {
+    var start = (d.classList.contains("splashing") ? 3050 : 150) + 1300;
+    var nums = show.querySelectorAll("[data-count]");
+    var ring = show.querySelector(".t-ring");
+    var bars = show.querySelectorAll(".t-bar");
+    var ringTo = ring ? ring.getAttribute("stroke-dashoffset") : null;
+    var barTo = Array.prototype.map.call(bars, function (b) { return b.getAttribute("width"); });
+    nums.forEach(function (n) { n.textContent = n.getAttribute("data-down") || "0"; });
+    if (ring) ring.setAttribute("stroke-dashoffset", "314.16");
+    bars.forEach(function (b) { b.setAttribute("width", "0%"); });
     setTimeout(function () {
-      card.classList.add("filled");
-      if (!num) return;
-      var target = parseInt(num.getAttribute("data-count"), 10), t0 = null, dur = 1100;
+      if (ring) ring.setAttribute("stroke-dashoffset", ringTo);
+      bars.forEach(function (b, i) { b.setAttribute("width", barTo[i]); });
+      var t0 = null, dur = 700;
       function step(t) {
         if (t0 === null) t0 = t;
-        var p = Math.min(1, (t - t0) / dur), eased = 1 - Math.pow(1 - p, 3);
-        num.textContent = Math.round(target * eased);
+        var p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+        nums.forEach(function (n) {
+          var to = parseInt(n.getAttribute("data-count"), 10), from = parseInt(n.getAttribute("data-down") || "0", 10);
+          n.textContent = Math.round(from + (to - from) * e);
+        });
         if (p < 1) requestAnimationFrame(step);
       }
-      num.textContent = "0";
       requestAnimationFrame(step);
+      setTimeout(function () { show.classList.add("lifted"); }, 650);
     }, start);
 
-    // Parallax on wide screens: the card drifts a little slower than the page.
+    // Parallax on wide screens: the phone drifts a little slower than the page.
     var wide = window.matchMedia("(min-width: 901px)");
     var ticking = false;
     window.addEventListener("scroll", function () {
       if (!wide.matches || ticking) return;
       ticking = true;
       requestAnimationFrame(function () {
-        var y = Math.min(window.scrollY, 700) * 0.12;
-        card.style.translate = "0 " + y + "px";
+        show.style.translate = "0 " + (Math.min(window.scrollY, 700) * 0.12) + "px";
         ticking = false;
       });
     }, { passive: true });
