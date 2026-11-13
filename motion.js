@@ -24,7 +24,7 @@
   var card = document.querySelector(".estimate");
   if (card) {
     var splashing = d.classList.contains("splashing");
-    var start = (splashing ? 1550 : 150) + 900;
+    var start = (splashing ? 3050 : 150) + 900;
     var num = card.querySelector("[data-count]");
     setTimeout(function () {
       card.classList.add("filled");
