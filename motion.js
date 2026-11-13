@@ -98,14 +98,24 @@
         var k = Math.min(1, dist / f.offsetWidth);
         f.style.setProperty("--z", (1 - 0.16 * k).toFixed(3));
         f.style.setProperty("--o", (1 - 0.45 * k).toFixed(3));
-        // Side phones lean outwards like the desktop fan (left one to the left, right one to the right).
-        f.style.setProperty("--r", ((offset < 0 ? -1 : 1) * 10 * k).toFixed(2) + "deg");
+        // Side phones lean outwards like the desktop fan (left one to the left, right one to the right);
+        // the phone in the centre (or nearly) stands straight.
+        var lean = k < 0.15 ? 0 : (k - 0.15) / 0.85;
+        f.style.setProperty("--r", ((offset < 0 ? -1 : 1) * 10 * lean).toFixed(2) + "deg");
         if (dist < bestDist) { bestDist = dist; best = i; }
       });
       dots.querySelectorAll("button").forEach(function (b, i) { b.setAttribute("aria-current", i === best ? "true" : "false"); });
     }
     strip.addEventListener("scroll", function () { if (!raf) raf = requestAnimationFrame(update); }, { passive: true });
-    window.addEventListener("resize", function () { if (narrow.matches) centre(1, false); update(); });
+    strip.addEventListener("scrollend", update);
+    // Re-centre only when the width really changes (a phone's address bar showing or hiding also
+    // fires "resize", and must not move the carousel).
+    var lastWidth = window.innerWidth;
+    window.addEventListener("resize", function () {
+      if (window.innerWidth !== lastWidth) { lastWidth = window.innerWidth; if (narrow.matches) centre(1, false); }
+      update();
+    });
+    window.addEventListener("load", function () { if (narrow.matches && strip.scrollLeft === 0) centre(1, false); update(); });
     if (narrow.matches) centre(1, false);
     update();
   }
