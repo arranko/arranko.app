@@ -188,7 +188,9 @@ h2.section-title { font-size: clamp(34px, 5.4vw, 56px); margin: 0 0 14px; font-w
 .giant-track span { font-weight: 900; font-style: italic; font-stretch: 62%; font-size: clamp(110px, 16vw, 220px); line-height: 1; text-transform: uppercase; padding-right: 40px; white-space: nowrap; color: rgba(12, 15, 10, 0.10); }
 .soon-card { position: relative; background: #FFFFFF; color: var(--black); border-radius: 28px; padding: 24px 28px; text-align: center; box-shadow: 0 20px 50px rgba(12, 15, 10, 0.15); margin: 0 20px; }
 .soon-card p { margin: 0 0 14px; font-weight: 700; font-size: 18px; }
-.stores { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.stores, .badges { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center; }
+.badges img { height: 48px; width: auto; display: block; }
+.soon-label { margin: 28px auto 12px !important; font-size: 13px !important; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
 .store { display: inline-flex; flex-direction: column; justify-content: center; min-height: 52px; padding: 0 20px; border-radius: 14px; background: var(--black); color: #FFFFFF; line-height: 1.15; text-align: left; }
 .store small { font-size: 12px; color: #C9CCC5; }
 .store strong { font-size: 17px; font-weight: 600; }
