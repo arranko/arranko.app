@@ -21,7 +21,7 @@
   document.querySelectorAll(".reveal, .stagger").forEach(function (el) { io.observe(el); });
 
   // The Today screen: once the phone has arrived, count the numbers up from zero (700 ms, like the
-  // approved screen), move the ring and the bars, then lift the two cards out.
+  // approved screen), and move the ring and the bars.
   var show = document.querySelector(".showcase");
   if (show) {
     var start = (d.classList.contains("splashing") ? 3050 : 150) + 1300;
@@ -47,7 +47,6 @@
         if (p < 1) requestAnimationFrame(step);
       }
       requestAnimationFrame(step);
-      setTimeout(function () { show.classList.add("lifted"); }, 650);
     }, start);
 
     // Parallax on wide screens: the phone drifts a little slower than the page.

@@ -101,8 +101,7 @@ h2.section-title { font-size: clamp(32px, 6vw, 52px); margin: 0 0 12px; font-wei
 .store strong { font-size: 18px; font-weight: 600; }
 .stores .note { font-size: 15px; font-weight: 600; }
 
-/* Home: the approved Today screen (final design canvas, light mode) in a phone, "exploded":
-   the calories card and the macros card lift out of the screen. Sizes are the app's own
+/* Home: the approved Today screen (final design canvas, light mode) in a phone. Sizes are the app's own
    (a 390 x 844 screen), scaled with --s. */
 .showcase { --s: 0.78; position: relative; width: calc(410px * var(--s)); height: calc(864px * var(--s)); justify-self: center; margin: 0; }
 .phone { position: absolute; inset: 0; border-radius: calc(60px * var(--s)); background: var(--black); box-shadow: 0 40px 90px rgba(0, 33, 24, 0.35); }
@@ -150,16 +149,6 @@ h2.section-title { font-size: clamp(32px, 6vw, 52px); margin: 0 0 12px; font-wei
 .t-tabs span { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-size: 10px; font-weight: 600; color: #3A3F37; height: 52px; border-radius: 26px; }
 .t-tabs .on { background: rgba(12, 15, 10, 0.07); color: var(--black); }
 .t-fab { position: absolute; right: 20px; bottom: 102px; width: 62px; height: 62px; border-radius: 31px; background: var(--lime); color: var(--black); display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(12, 15, 10, 0.22); }
-
-/* The exploded view: each lifted card leaves its empty slot behind on the screen. */
-.t-slot { display: none; }
-.pop { position: relative; z-index: 2; box-shadow: 0 30px 60px rgba(0, 33, 24, 0.28); }
-.pop-left { transform: translate(-70px, -6px) rotate(-3deg) scale(1.04); }
-.pop-right { transform: translate(64px, 4px) rotate(2.5deg) scale(1.04); }
-.t-kcal + .t-slot, .t-slot { pointer-events: none; }
-.s-kcal, .s-macros { display: block; position: absolute; left: 20px; right: 20px; border-radius: 28px; border: 2px dashed #C9CCC5; }
-.s-kcal { top: 172px; height: 160px; }
-.s-macros { top: 348px; height: 100px; }
 
 /* Home: sections */
 .section { padding: clamp(64px, 10vw, 112px) 0 0; }
@@ -279,8 +268,6 @@ footer p { margin: 0; }
 @media (max-width: 900px) {
   .hero, .promise { grid-template-columns: minmax(0, 1fr); }
   .showcase { --s: 0.66; margin-top: 8px; }
-  .pop-left { transform: translate(-36px, -4px) rotate(-3deg) scale(1.03); }
-  .pop-right { transform: translate(34px, 4px) rotate(2.5deg) scale(1.03); }
   .steps { grid-template-columns: minmax(0, 1fr); }
   .features { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .doc { grid-template-columns: minmax(0, 1fr); gap: 24px; padding-top: 32px; }
