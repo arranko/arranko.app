@@ -466,14 +466,17 @@ th { color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: 0.1
 .c-done { display: flex; align-items: center; justify-content: center; height: 56px; border-radius: 28px; background: var(--lime); color: var(--black); font-size: 17px; font-weight: 600; }
 
 /* Phones you can look at: hover lifts one, a tap or click opens it big (motion.js). */
-.fan { cursor: zoom-in; transition: transform 0.35s var(--ease, ease); }
+.fan { cursor: zoom-in; transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), scale 0.2s ease; }
 .fan:focus-visible { outline: none; }
 .fan:focus-visible .phone { outline: 3px solid var(--lime); outline-offset: 4px; }
+/* Hover: the phone comes forward, straighter and bigger (the side ones up to the middle one's size). */
 @media (hover: hover) and (min-width: 761px) {
-  .fan-center:hover { transform: translateX(-50%) translateY(-14px); }
-  .fan-left:hover { z-index: 4; transform: translateX(calc(-50% - 280px)) translateY(30px) rotate(-7deg); }
-  .fan-right:hover { z-index: 4; transform: translateX(calc(-50% + 280px)) translateY(30px) rotate(7deg); }
+  .fan-center:hover { transform: translateX(-50%) translateY(-28px) scale(1.08); }
+  .fan-left:hover { z-index: 4; transform: translateX(calc(-50% - 260px)) translateY(-10px) rotate(-4deg) scale(1.15); }
+  .fan-right:hover { z-index: 4; transform: translateX(calc(-50% + 260px)) translateY(-10px) rotate(4deg) scale(1.15); }
 }
+/* Touch: a quick zoom under the finger before the phone opens big. */
+@media (hover: none) { .fan:active { scale: 1.06; } }
 .viewer {
   position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center;
   background: rgba(12, 15, 10, 0.55); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
@@ -486,5 +489,5 @@ th { color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: 0.1
 }
 .viewer-close svg { width: 18px; height: 18px; }
 @keyframes viewer-in { from { opacity: 0; } to { opacity: 1; } }
-@keyframes viewer-phone { from { opacity: 0; transform: translateY(30px) scale(0.96); } to { opacity: 1; transform: none; } }
+@keyframes viewer-phone { from { opacity: 0; transform: translateY(40px) scale(0.7); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .viewer, .viewer .showcase { animation: none; } .fan { transition: none; } }
