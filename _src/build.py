@@ -84,13 +84,13 @@ T = {
            "menu": [("#como-funciona", "Cómo funciona"), ("#funciones", "Funciones"), ("#preguntas", "Preguntas")],
            "cta": "Síguenos", "draft": "Borrador: estos textos esperan aprobación.", "toc": "En esta página",
            "updated": "Última actualización", "theme": "Cambiar entre modo claro y oscuro", "other": "EN",
-           "other_label": "English", "home": "arranko, inicio",
+           "other_label": "English", "home": "arranko, inicio", "menu_label": "Menú",
            "tag": "La app de nutrición con IA: calorías y macros en una foto."},
     "en": {"legal": [("privacy", "Privacy Policy"), ("terms", "Terms of Use"), ("support", "Support"), ("delete", "Delete your account")],
            "menu": [("#how-it-works", "How it works"), ("#features", "Features"), ("#faq", "Questions")],
            "cta": "Follow us", "draft": "Draft: these texts are waiting for approval.", "toc": "On this page",
            "updated": "Last updated", "theme": "Switch between light and dark mode", "other": "ES",
-           "other_label": "Español", "home": "arranko, home",
+           "other_label": "Español", "home": "arranko, home", "menu_label": "Menu",
            "tag": "The AI nutrition app: calories and macros from a photo."},
 }
 INSTAGRAM = "https://www.instagram.com/arrankoapp/"
@@ -226,11 +226,12 @@ for key, langs in PAGES.items():
 <header class="top-wrap">
 <div class="top">
 <a class="brand" href="{home_url}" aria-label="{t['home']}"><span class="tile">{LOGO}</span><span>arranko</span></a>
-<nav class="menu" aria-label="Menu">{menu}</nav>
+<nav class="menu" id="site-menu" aria-label="Menu">{menu}</nav>
 <div class="actions">
 <button class="theme" type="button" aria-label="{t['theme']}">{THEME_ICON}</button>
 <a class="lang" href="{other_url}" hreflang="{other}" lang="{other}" aria-label="{t['other_label']}">{t['other']}</a>
 <a class="cta" href="{INSTAGRAM}">{t['cta']}</a>
+<button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="{t['menu_label']}"><span></span><span></span></button>
 </div>
 </div>
 </header>

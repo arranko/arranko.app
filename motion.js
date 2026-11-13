@@ -12,6 +12,22 @@
     try { localStorage.setItem("arranko-theme", next); } catch (e) {}
   });
 
+  // The menu button on narrower screens: opens and closes the menu panel; a tapped link,
+  // a tap outside or Escape closes it.
+  var top = document.querySelector(".top");
+  var menuBtn = document.querySelector(".menu-btn");
+  function setMenu(open) {
+    if (!top || !menuBtn) return;
+    top.classList.toggle("open", open);
+    menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+  if (menuBtn) {
+    menuBtn.addEventListener("click", function () { setMenu(!top.classList.contains("open")); });
+    document.querySelectorAll(".menu a").forEach(function (a) { a.addEventListener("click", function () { setMenu(false); }); });
+    document.addEventListener("click", function (e) { if (top.classList.contains("open") && !top.contains(e.target)) setMenu(false); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") setMenu(false); });
+  }
+
   if (!d.classList.contains("motion")) return;
   d.classList.add("motion-ready");
 
