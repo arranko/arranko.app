@@ -298,7 +298,12 @@ th { color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: 0.1
 .foot-links nav { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-bottom: 12px; font-weight: 600; }
 .foot-links nav a { text-decoration: none; }
 .foot-links nav a:hover { text-decoration: underline; text-decoration-color: var(--lime); }
-.foot-links p { margin: 0; color: #A6ABA2; font-size: 15px; }
+.social { display: flex; gap: 10px; }
+.social a { width: 44px; height: 44px; border-radius: 22px; background: #1A1D18; color: #FFFFFF; display: inline-flex; align-items: center; justify-content: center; }
+.social a:hover { background: var(--lime); color: var(--black); }
+.social svg { width: 20px; height: 20px; }
+:root[data-theme="dark"] .social a { background: #262A23; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .social a { background: #262A23; } }
 .foot-word { margin: 48px 0 0; font-weight: 800; font-size: clamp(80px, 22vw, 300px); line-height: 0.8; letter-spacing: -0.05em; color: #1A1D18; text-align: center; user-select: none; }
 .foot-copy { margin: 16px 0 0; color: #A6ABA2; font-size: 14px; }
 :root[data-theme="dark"] .foot { background: #1A1D18; }
