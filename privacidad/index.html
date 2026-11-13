@@ -26,7 +26,7 @@
   setTimeout(function () { if (!d.classList.contains("motion-ready")) d.classList.remove("motion"); }, 2500);
 })();
 </script>
-<link rel="stylesheet" href="/style.css?v=75be5abf">
+<link rel="stylesheet" href="/style.css?v=b3be796b">
 <link rel="stylesheet" href="/motion.css?v=e27ded9c">
 </head>
 <body class="inner">
@@ -63,11 +63,11 @@
 <table>
 <thead><tr><th>Datos</th><th>Para qué</th></tr></thead>
 <tbody>
-<tr><td><strong>Cuenta:</strong> tu correo y tu contraseña (guardada solo cifrada, nunca legible)</td><td>Para que inicies sesión y para enviarte los correos de la cuenta: confirmar tu correo, restablecer tu contraseña y avisarte cuando cambia.</td></tr>
-<tr><td><strong>Perfil:</strong> edad, sexo, altura, peso, nivel de actividad, objetivo, unidades, día de descanso y recordatorios</td><td>Para calcular tus objetivos de calorías y macros y mostrarlos como elegiste.</td></tr>
-<tr><td><strong>Lo que registras:</strong> comidas (nombre, cantidad, calorías, proteína, carbohidratos, grasas, comida del día y fecha), las fotos que añades, favoritos, pesajes, tu racha y tus insignias</td><td>Eso es la app: tu día, tu historial y tu progreso.</td></tr>
-<tr><td><strong>Plan y uso:</strong> si tienes Premium y cuántas estimaciones con IA usaste hoy y este mes</td><td>Para aplicar con justicia los límites del Plan Gratis y de Premium.</td></tr>
-<tr><td><strong>Alimentos que no encontramos:</strong> solo el nombre del alimento, sin nada que lo relacione contigo</td><td>Para añadir a nuestra base de datos los alimentos que faltan.</td></tr>
+<tr><td data-label="Datos"><strong>Cuenta:</strong> tu correo y tu contraseña (guardada solo cifrada, nunca legible)</td><td data-label="Para qué">Para que inicies sesión y para enviarte los correos de la cuenta: confirmar tu correo, restablecer tu contraseña y avisarte cuando cambia.</td></tr>
+<tr><td data-label="Datos"><strong>Perfil:</strong> edad, sexo, altura, peso, nivel de actividad, objetivo, unidades, día de descanso y recordatorios</td><td data-label="Para qué">Para calcular tus objetivos de calorías y macros y mostrarlos como elegiste.</td></tr>
+<tr><td data-label="Datos"><strong>Lo que registras:</strong> comidas (nombre, cantidad, calorías, proteína, carbohidratos, grasas, comida del día y fecha), las fotos que añades, favoritos, pesajes, tu racha y tus insignias</td><td data-label="Para qué">Eso es la app: tu día, tu historial y tu progreso.</td></tr>
+<tr><td data-label="Datos"><strong>Plan y uso:</strong> si tienes Premium y cuántas estimaciones con IA usaste hoy y este mes</td><td data-label="Para qué">Para aplicar con justicia los límites del Plan Gratis y de Premium.</td></tr>
+<tr><td data-label="Datos"><strong>Alimentos que no encontramos:</strong> solo el nombre del alimento, sin nada que lo relacione contigo</td><td data-label="Para qué">Para añadir a nuestra base de datos los alimentos que faltan.</td></tr>
 </tbody>
 </table>
 </div>
@@ -79,12 +79,12 @@
 <table>
 <thead><tr><th>Qué hacemos</th><th>Base legal (RGPD)</th></tr></thead>
 <tbody>
-<tr><td>Gestionar tu cuenta y las funciones de la app</td><td>Nuestro contrato contigo (artículo 6(1)(b))</td></tr>
-<tr><td>Guardar tu peso, altura, edad, sexo y comidas, que son datos de salud</td><td>Tu consentimiento explícito, dado en la app (artículo 9(2)(a))</td></tr>
-<tr><td>Enviar una comida a la IA para estimarla</td><td>Tu consentimiento explícito, pedido la primera vez y modificable en Ajustes</td></tr>
-<tr><td>Informes de fallos y la seguridad del servicio</td><td>Nuestro interés legítimo en una app que funcione y sea segura (artículo 6(1)(f))</td></tr>
-<tr><td>Recuentos de uso anónimos</td><td>Tu consentimiento, que puedes retirar con Compartir uso anónimo en Ajustes</td></tr>
-<tr><td>Guardar los registros que exige la ley</td><td>Obligación legal (artículo 6(1)(c))</td></tr>
+<tr><td data-label="Qué hacemos">Gestionar tu cuenta y las funciones de la app</td><td data-label="Base legal (RGPD)">Nuestro contrato contigo (artículo 6(1)(b))</td></tr>
+<tr><td data-label="Qué hacemos">Guardar tu peso, altura, edad, sexo y comidas, que son datos de salud</td><td data-label="Base legal (RGPD)">Tu consentimiento explícito, dado en la app (artículo 9(2)(a))</td></tr>
+<tr><td data-label="Qué hacemos">Enviar una comida a la IA para estimarla</td><td data-label="Base legal (RGPD)">Tu consentimiento explícito, pedido la primera vez y modificable en Ajustes</td></tr>
+<tr><td data-label="Qué hacemos">Informes de fallos y la seguridad del servicio</td><td data-label="Base legal (RGPD)">Nuestro interés legítimo en una app que funcione y sea segura (artículo 6(1)(f))</td></tr>
+<tr><td data-label="Qué hacemos">Recuentos de uso anónimos</td><td data-label="Base legal (RGPD)">Tu consentimiento, que puedes retirar con Compartir uso anónimo en Ajustes</td></tr>
+<tr><td data-label="Qué hacemos">Guardar los registros que exige la ley</td><td data-label="Base legal (RGPD)">Obligación legal (artículo 6(1)(c))</td></tr>
 </tbody>
 </table>
 </div>
@@ -109,12 +109,12 @@
 <table>
 <thead><tr><th>Servicio</th><th>Para qué</th><th>Dónde</th></tr></thead>
 <tbody>
-<tr><td>Supabase</td><td>Base de datos, inicio de sesión y fotos</td><td>UE (Irlanda)</td></tr>
-<tr><td>Google Gemini</td><td>Estimaciones de comidas con IA</td><td>Servidores de Google, que pueden estar fuera de la UE</td></tr>
-<tr><td>Resend</td><td>Correos de la cuenta</td><td>Estados Unidos</td></tr>
-<tr><td>Sentry</td><td>Informes de fallos</td><td>UE (Alemania)</td></tr>
-<tr><td>PostHog</td><td>Recuentos de uso anónimos</td><td>UE (Alemania)</td></tr>
-<tr><td>Apple y Google</td><td>Tiendas de apps y pagos de Premium, con sus propias políticas de privacidad</td><td>Sus propios servidores</td></tr>
+<tr><td data-label="Servicio">Supabase</td><td data-label="Para qué">Base de datos, inicio de sesión y fotos</td><td data-label="Dónde">UE (Irlanda)</td></tr>
+<tr><td data-label="Servicio">Google Gemini</td><td data-label="Para qué">Estimaciones de comidas con IA</td><td data-label="Dónde">Servidores de Google, que pueden estar fuera de la UE</td></tr>
+<tr><td data-label="Servicio">Resend</td><td data-label="Para qué">Correos de la cuenta</td><td data-label="Dónde">Estados Unidos</td></tr>
+<tr><td data-label="Servicio">Sentry</td><td data-label="Para qué">Informes de fallos</td><td data-label="Dónde">UE (Alemania)</td></tr>
+<tr><td data-label="Servicio">PostHog</td><td data-label="Para qué">Recuentos de uso anónimos</td><td data-label="Dónde">UE (Alemania)</td></tr>
+<tr><td data-label="Servicio">Apple y Google</td><td data-label="Para qué">Tiendas de apps y pagos de Premium, con sus propias políticas de privacidad</td><td data-label="Dónde">Sus propios servidores</td></tr>
 </tbody>
 </table>
 </div>

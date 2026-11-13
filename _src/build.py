@@ -117,6 +117,19 @@ def slug(text):
     return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
 
 
+def label_tables(body):
+    """Gives every table cell its column name (data-label), so on phones each row can show as a card."""
+    def one_table(m):
+        table = m.group(0)
+        heads = [re.sub(r"<[^>]+>", "", h) for h in re.findall(r"<th>(.*?)</th>", table, re.S)]
+
+        def one_row(r):
+            cells = iter(heads)
+            return re.sub(r"<td>", lambda _: '<td data-label="%s">' % htmllib.escape(next(cells, ""), quote=True), r.group(0))
+        return re.sub(r"<tr>.*?</tr>", one_row, table, flags=re.S)
+    return re.sub(r"<table>.*?</table>", one_table, body, flags=re.S)
+
+
 def with_toc(body, lang):
     """Gives every <h2> an id and returns (body, table of contents)."""
     items = []
@@ -175,7 +188,7 @@ for key, langs in PAGES.items():
     for lang, (path, title, desc, head, toc) in langs.items():
         t = T[lang]
         name = BODY_FILE[key] if isinstance(BODY_FILE[key], str) else BODY_FILE[key][lang]
-        body = (BODIES / lang / (name + ".html")).read_text().strip()
+        body = label_tables((BODIES / lang / (name + ".html")).read_text().strip())
         is_home = key == "home"
         other = "en" if lang == "es" else "es"
         other_url = url(key, other) if other in langs else url("home", other)

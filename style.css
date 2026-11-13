@@ -308,6 +308,18 @@ table { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 520p
 th, td { text-align: left; vertical-align: top; padding: 14px 16px; border-bottom: 1px solid var(--line); }
 tr:last-child td { border-bottom: none; }
 th { color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: var(--soft); }
+/* Phones: no sideways scrolling; each row becomes a card, each value under its column name. */
+@media (max-width: 760px) {
+  .table-scroll { overflow: visible; border: none; background: transparent; }
+  table { min-width: 0; }
+  table, tbody, tr, td { display: block; width: 100%; }
+  thead { display: none; }
+  tr { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-m); padding: 6px 16px; margin-bottom: 10px; }
+  td { padding: 10px 0; border-bottom: 1px solid var(--line); }
+  tr td:last-child { border-bottom: none; }
+  tr:last-child td:not(:last-child) { border-bottom: 1px solid var(--line); }
+  td::before { content: attr(data-label); display: block; margin-bottom: 4px; color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+}
 .contact { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-bottom: 24px; }
 .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-l); padding: 28px; display: flex; flex-direction: column; gap: 10px; }
 .card .icon { width: 52px; height: 52px; border-radius: 16px; background: var(--lime); color: var(--black); display: inline-flex; align-items: center; justify-content: center; margin-bottom: 8px; }
