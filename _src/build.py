@@ -16,7 +16,7 @@ def version(name):
     return hashlib.sha1((OUT / name).read_bytes()).hexdigest()[:8]
 
 BODIES = pathlib.Path(__file__).parent / "bodies"
-DRAFT = True  # "waiting for approval" banner on the legal pages until the founder approves them (ARR-32)
+DRAFT = False  # True shows a "waiting for approval" banner on the legal pages (founder approved them 13 Nov, ARR-32)
 UPDATED = {"es": "13 de noviembre de 2026", "en": "13 November 2026"}
 
 ISO = ('<g transform="skewX(-12) translate(22 0)" fill="currentColor">'
