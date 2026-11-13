@@ -26,7 +26,7 @@
   setTimeout(function () { if (!d.classList.contains("motion-ready")) d.classList.remove("motion"); }, 2500);
 })();
 </script>
-<link rel="stylesheet" href="/style.css?v=75be5abf">
+<link rel="stylesheet" href="/style.css?v=b3be796b">
 <link rel="stylesheet" href="/motion.css?v=e27ded9c">
 </head>
 <body class="inner">
@@ -63,11 +63,11 @@
 <table>
 <thead><tr><th>Data</th><th>Why</th></tr></thead>
 <tbody>
-<tr><td><strong>Account:</strong> your email address and password (stored only in scrambled form, never readable)</td><td>To sign you in and send you account emails: confirming your email, resetting your password, telling you when it changed.</td></tr>
-<tr><td><strong>Profile:</strong> age, sex, height, weight, activity level, goal, units, rest day and reminder settings</td><td>To work out your calorie and macro targets and show them the way you chose.</td></tr>
-<tr><td><strong>What you log:</strong> meals (name, amount, calories, protein, carbs, fat, meal and date), meal photos you add, favourites, weigh-ins, your streak and badges</td><td>That is the app: your day, your history and your progress.</td></tr>
-<tr><td><strong>Plan and usage counts:</strong> whether you have Premium and how many AI estimates you used today and this month</td><td>To apply the Free Plan and Premium limits fairly.</td></tr>
-<tr><td><strong>Foods we couldn't find:</strong> the food name only, with nothing that links it to you</td><td>To add missing foods to our food database.</td></tr>
+<tr><td data-label="Data"><strong>Account:</strong> your email address and password (stored only in scrambled form, never readable)</td><td data-label="Why">To sign you in and send you account emails: confirming your email, resetting your password, telling you when it changed.</td></tr>
+<tr><td data-label="Data"><strong>Profile:</strong> age, sex, height, weight, activity level, goal, units, rest day and reminder settings</td><td data-label="Why">To work out your calorie and macro targets and show them the way you chose.</td></tr>
+<tr><td data-label="Data"><strong>What you log:</strong> meals (name, amount, calories, protein, carbs, fat, meal and date), meal photos you add, favourites, weigh-ins, your streak and badges</td><td data-label="Why">That is the app: your day, your history and your progress.</td></tr>
+<tr><td data-label="Data"><strong>Plan and usage counts:</strong> whether you have Premium and how many AI estimates you used today and this month</td><td data-label="Why">To apply the Free Plan and Premium limits fairly.</td></tr>
+<tr><td data-label="Data"><strong>Foods we couldn't find:</strong> the food name only, with nothing that links it to you</td><td data-label="Why">To add missing foods to our food database.</td></tr>
 </tbody>
 </table>
 </div>
@@ -79,12 +79,12 @@
 <table>
 <thead><tr><th>What we do</th><th>Legal basis (GDPR)</th></tr></thead>
 <tbody>
-<tr><td>Run your account and the app's features</td><td>Our contract with you (article 6(1)(b))</td></tr>
-<tr><td>Keep your weight, height, age, sex and meals, which are health data</td><td>Your explicit consent, given in the app (article 9(2)(a))</td></tr>
-<tr><td>Send a meal to the AI for an estimate</td><td>Your explicit consent, asked the first time and changeable in Settings</td></tr>
-<tr><td>Crash reports and keeping the service secure</td><td>Our legitimate interest in an app that works and is safe (article 6(1)(f))</td></tr>
-<tr><td>Anonymous usage counts</td><td>Your consent, which you can take back with Share anonymous usage in Settings</td></tr>
-<tr><td>Keeping records the law requires</td><td>Legal obligation (article 6(1)(c))</td></tr>
+<tr><td data-label="What we do">Run your account and the app's features</td><td data-label="Legal basis (GDPR)">Our contract with you (article 6(1)(b))</td></tr>
+<tr><td data-label="What we do">Keep your weight, height, age, sex and meals, which are health data</td><td data-label="Legal basis (GDPR)">Your explicit consent, given in the app (article 9(2)(a))</td></tr>
+<tr><td data-label="What we do">Send a meal to the AI for an estimate</td><td data-label="Legal basis (GDPR)">Your explicit consent, asked the first time and changeable in Settings</td></tr>
+<tr><td data-label="What we do">Crash reports and keeping the service secure</td><td data-label="Legal basis (GDPR)">Our legitimate interest in an app that works and is safe (article 6(1)(f))</td></tr>
+<tr><td data-label="What we do">Anonymous usage counts</td><td data-label="Legal basis (GDPR)">Your consent, which you can take back with Share anonymous usage in Settings</td></tr>
+<tr><td data-label="What we do">Keeping records the law requires</td><td data-label="Legal basis (GDPR)">Legal obligation (article 6(1)(c))</td></tr>
 </tbody>
 </table>
 </div>
@@ -109,12 +109,12 @@
 <table>
 <thead><tr><th>Service</th><th>What for</th><th>Where</th></tr></thead>
 <tbody>
-<tr><td>Supabase</td><td>Database, sign-in and photo storage</td><td>EU (Ireland)</td></tr>
-<tr><td>Google Gemini</td><td>AI meal estimates</td><td>Google's servers, which may be outside the EU</td></tr>
-<tr><td>Resend</td><td>Account emails</td><td>United States</td></tr>
-<tr><td>Sentry</td><td>Crash reports</td><td>EU (Germany)</td></tr>
-<tr><td>PostHog</td><td>Anonymous usage counts</td><td>EU (Germany)</td></tr>
-<tr><td>Apple and Google</td><td>App stores and Premium payments, under their own privacy policies</td><td>Their own servers</td></tr>
+<tr><td data-label="Service">Supabase</td><td data-label="What for">Database, sign-in and photo storage</td><td data-label="Where">EU (Ireland)</td></tr>
+<tr><td data-label="Service">Google Gemini</td><td data-label="What for">AI meal estimates</td><td data-label="Where">Google's servers, which may be outside the EU</td></tr>
+<tr><td data-label="Service">Resend</td><td data-label="What for">Account emails</td><td data-label="Where">United States</td></tr>
+<tr><td data-label="Service">Sentry</td><td data-label="What for">Crash reports</td><td data-label="Where">EU (Germany)</td></tr>
+<tr><td data-label="Service">PostHog</td><td data-label="What for">Anonymous usage counts</td><td data-label="Where">EU (Germany)</td></tr>
+<tr><td data-label="Service">Apple and Google</td><td data-label="What for">App stores and Premium payments, under their own privacy policies</td><td data-label="Where">Their own servers</td></tr>
 </tbody>
 </table>
 </div>
