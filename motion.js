@@ -74,17 +74,6 @@
       }
       requestAnimationFrame(step);
     }, start);
-
-    // Parallax on wide screens: the phone drifts up a little as the page scrolls (never out of the block).
-    var wide = window.matchMedia("(min-width: 901px)");
-    var ticking = false;
-    window.addEventListener("scroll", function () {
-      if (!wide.matches || ticking) return;
-      ticking = true;
-      requestAnimationFrame(function () {
-        show.style.translate = "0 " + (-Math.min(window.scrollY, 700) * 0.06) + "px";
-        ticking = false;
-      });
-    }, { passive: true });
+    // No scroll drift: in the fan of three phones the middle one must stay level with the others.
   }
 })();
