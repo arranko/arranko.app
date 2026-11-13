@@ -49,6 +49,13 @@ html.motion .words .w > span { animation: rise-mask 0.8s var(--ease) both; anima
 /* The phone arrives, then the numbers, ring and bars count up as on the approved Today screen. */
 @keyframes phone-in { from { opacity: 0; transform: translateY(70px); } to { opacity: 1; transform: none; } }
 html.motion .hero .showcase { animation: phone-in 1s var(--ease) both; animation-delay: calc(var(--intro) + 0.4s); }
+html.motion .hero .fan-left .showcase { animation-delay: calc(var(--intro) + 0.6s); }
+html.motion .hero .fan-right .showcase { animation-delay: calc(var(--intro) + 0.7s); }
+/* The arrow capsule in the headline: it stretches open, then the arrow runs to the right end. */
+@keyframes pill-open { from { width: 0.62em; } to { width: 1.7em; } }
+@keyframes dot-run { from { left: 0.06em; } to { left: calc(100% - 0.56em); } }
+html.motion .hero-pill { animation: pill-open 0.7s var(--ease) both; animation-delay: calc(var(--intro) + 0.5s); }
+html.motion .hp-dot { animation: dot-run 0.8s var(--ease) both; animation-delay: calc(var(--intro) + 1.1s); }
 html.motion .t-ring { transition: stroke-dashoffset 0.7s cubic-bezier(.2, .8, .2, 1); }
 html.motion .t-bar { transition: width 0.6s cubic-bezier(.2, .8, .2, 1); }
 
