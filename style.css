@@ -240,9 +240,9 @@ h2.section-title { font-size: clamp(34px, 5.4vw, 56px); margin: 0 0 14px; font-w
 .feats { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
 .feats > .feat { flex: 0 1 calc((100% - 28px) / 3); }
 .feat { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 20px; display: flex; gap: 16px; align-items: flex-start; }
-.feat .ficon { width: 44px; height: 44px; border-radius: 14px; background: var(--soft); color: var(--text); }
+/* Every feature icon the same lime (founder, 13 Nov: "either all are lime or none"). */
+.feat .ficon { width: 44px; height: 44px; border-radius: 14px; background: var(--lime); color: var(--black); }
 .feat .ficon svg { width: 22px; height: 22px; }
-.feat.ai .ficon { background: var(--lime); color: var(--black); }
 .feat h3 { font-size: 18px; margin-bottom: 4px; }
 .feat p { font-size: 15px; line-height: 1.5; }
 
@@ -436,6 +436,9 @@ th { color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: 0.1
 .c-title { text-align: center; font-weight: 600; font-size: 17px; }
 .c-fav { justify-self: end; width: 44px; height: 44px; border-radius: 22px; border: 1px solid var(--scr-edge); background: var(--scr-glass); color: var(--scr-muted); display: flex; align-items: center; justify-content: center; }
 .c-scroll { position: absolute; top: 100px; bottom: 104px; left: 0; right: 0; overflow-y: auto; padding: 8px 20px 24px; display: flex; flex-direction: column; gap: 16px; scrollbar-width: none; }
+/* In the hero the screen doesn't scroll by itself, so a swipe on it moves the carousel; it scrolls
+   once the phone is opened big. */
+.hero-fan .c-scroll { overflow: hidden; }
 .c-scroll::-webkit-scrollbar { display: none; }
 .c-photo { width: 350px; height: 350px; border-radius: 28px; object-fit: cover; display: block; flex-shrink: 0; }
 .c-pills { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -488,7 +491,8 @@ th { color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: 0.1
   .fan, .fan-left, .fan-center, .fan-right {
     position: relative; left: auto; bottom: auto; transform: none; flex: 0 0 auto;
     scroll-snap-align: center; scroll-snap-stop: always;
-    scale: var(--z, 0.84); opacity: var(--o, 0.55); transition: scale 0.15s linear, opacity 0.15s linear;
+    scale: var(--z, 0.84); opacity: var(--o, 0.55); rotate: var(--r, 0deg);
+    transition: scale 0.15s linear, opacity 0.15s linear, rotate 0.15s linear;
   }
   .fan-center .showcase, .fan-left .showcase, .fan-right .showcase { --s: 0.56; }
   .fan-dots { display: flex; justify-content: center; gap: 8px; margin: 0 0 40px; }
