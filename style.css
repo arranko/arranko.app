@@ -120,7 +120,8 @@ h2.section-title { font-size: clamp(34px, 5.4vw, 56px); margin: 0 0 14px; font-w
 /* Home: hero in three columns, phone in the middle */
 .hero { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 0.8fr); gap: 32px; align-items: center; padding: 48px 0 0; position: relative; z-index: 2; }
 .hero h1 { font-weight: 900; font-style: italic; font-stretch: 62%; text-transform: uppercase; letter-spacing: 0; line-height: 0.86; font-size: clamp(72px, 8.6vw, 128px); }
-.hero h1 .words .w { padding-right: 0.1em; margin-right: -0.1em; }
+/* Room on both sides of each word's mask, so the slanted letters (the A of ARRANCA) aren't cut. */
+.hero h1 .words .w { padding: 0 0.1em 0.06em 0.12em; margin: 0 -0.1em -0.06em -0.12em; }
 .hero h1 .accent > span { background: linear-gradient(transparent 58%, var(--lime) 58%, var(--lime) 92%, transparent 92%); }
 .hero h1 .accent { padding-right: 0.06em; }
 .hero-soon { margin-top: 32px; }
@@ -156,6 +157,7 @@ h2.section-title { font-size: clamp(34px, 5.4vw, 56px); margin: 0 0 14px; font-w
 .layer {
   position: absolute; left: calc(10px * var(--s)); top: calc(10px * var(--s)); width: 390px; height: 844px;
   transform: scale(var(--s)); transform-origin: 0 0; color: var(--scr-text);
+  border-radius: 52px; overflow: hidden;
   padding: 52px 20px 0; display: flex; flex-direction: column; gap: 16px; font-variant-numeric: tabular-nums; line-height: 1.3;
 }
 .t-top { display: flex; justify-content: space-between; align-items: center; }
@@ -185,10 +187,12 @@ h2.section-title { font-size: clamp(34px, 5.4vw, 56px); margin: 0 0 14px; font-w
 .t-entry > svg { color: var(--scr-muted); }
 .t-ph { position: relative; flex-shrink: 0; }
 .t-ph img { width: 64px; height: 64px; border-radius: 18px; object-fit: cover; display: block; }
+.t-noph { width: 64px; height: 64px; border-radius: 18px; background: var(--scr-lens); color: var(--scr-muted); display: flex; align-items: center; justify-content: center; }
 .t-star { position: absolute; right: -6px; bottom: -6px; width: 24px; height: 24px; border-radius: 12px; background: var(--black); display: flex; align-items: center; justify-content: center; }
 .t-info { display: flex; flex-direction: column; gap: 3px; flex-grow: 1; min-width: 0; font-size: 14px; color: var(--scr-muted); }
 .t-info div { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
-.t-info b { font-size: 17px; font-weight: 600; color: var(--scr-text); }
+.t-info b { font-size: 17px; font-weight: 600; color: var(--scr-text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.t-info div small { white-space: nowrap; }
 .t-info small { font-size: 13px; }
 .t-tabs { position: absolute; left: 20px; right: 20px; bottom: 26px; height: 62px; border-radius: 31px; background: var(--scr-glass); border: 1px solid var(--scr-edge); box-shadow: inset 0 1px 0 var(--scr-edge), 0 6px 24px rgba(0, 0, 0, 0.10); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: center; padding: 0 5px; }
 .t-tabs span { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-size: 10px; font-weight: 600; color: var(--scr-tab); height: 52px; border-radius: 26px; }
@@ -424,3 +428,63 @@ th { color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: 0.1
   .fan-center .showcase { --s: 0.56; }
   .fan-left .showcase, .fan-right .showcase { --s: 0.46; }
 }
+
+/* The approved Confirm screen ("Nutrition": the AI estimate before saving), in app sizes. */
+.layer.confirm { padding: 0; display: block; }
+.c-head { position: absolute; top: 44px; left: 0; right: 0; height: 56px; padding: 0 16px 0 20px; display: grid; grid-template-columns: 90px 1fr 90px; align-items: center; }
+.c-discard { color: var(--scr-muted); font-size: 17px; }
+.c-title { text-align: center; font-weight: 600; font-size: 17px; }
+.c-fav { justify-self: end; width: 44px; height: 44px; border-radius: 22px; border: 1px solid var(--scr-edge); background: var(--scr-glass); color: var(--scr-muted); display: flex; align-items: center; justify-content: center; }
+.c-scroll { position: absolute; top: 100px; bottom: 104px; left: 0; right: 0; overflow-y: auto; padding: 8px 20px 24px; display: flex; flex-direction: column; gap: 16px; scrollbar-width: none; }
+.c-scroll::-webkit-scrollbar { display: none; }
+.c-photo { width: 350px; height: 350px; border-radius: 28px; object-fit: cover; display: block; flex-shrink: 0; }
+.c-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.c-pill { display: flex; align-items: center; gap: 6px; height: 34px; padding: 0 12px; border-radius: 17px; background: var(--scr-card); color: var(--scr-muted); font-size: 14px; }
+.c-pill.c-date { background: transparent; border: 1px solid var(--scr-edge); color: var(--scr-text); font-weight: 600; }
+.c-name { font-size: 26px; font-weight: 600; padding: 0 4px 8px; border-bottom: 1.5px solid var(--scr-edge); }
+.c-types { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+.c-types span { height: 44px; border-radius: 22px; border: 1px solid var(--scr-edge); font-size: 15px; font-weight: 600; display: flex; align-items: center; justify-content: center; }
+.c-types .on { background: var(--scr-text); color: var(--scr-bg); border-color: var(--scr-text); }
+.c-kcal { background: var(--lime); color: var(--black); border-radius: 28px; padding: 20px 22px; display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+.c-kcal b { font-weight: 600; font-size: 52px; line-height: 1; letter-spacing: -0.03em; }
+.c-kcal small { font-size: 18px; font-weight: 500; color: var(--olive); margin-left: 8px; }
+.c-macros { background: var(--scr-macro); color: #FFFFFF; border-radius: 28px; padding: 18px 20px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; flex-shrink: 0; }
+.c-macros > div { display: flex; flex-direction: column; gap: 6px; }
+.c-macros > div > span:first-child { font-size: 14px; font-weight: 500; color: #A6ABA2; }
+.c-macros b { font-weight: 600; font-size: 26px; color: var(--lime); line-height: 1; }
+.c-macros small { font-size: 15px; color: #A6ABA2; }
+.c-items { background: var(--scr-card); border-radius: 24px; padding: 18px 18px 6px; flex-shrink: 0; }
+.c-items-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; font-weight: 600; font-size: 19px; }
+.c-edit { display: flex; align-items: center; gap: 2px; height: 44px; font-size: 15px; font-weight: 600; }
+.c-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 0; border-top: 1px solid var(--scr-edge); }
+.c-items-head + .c-item { border-top: none; }
+.c-item > span:first-child { display: flex; flex-direction: column; gap: 3px; }
+.c-item b { font-size: 17px; font-weight: 600; }
+.c-item small { font-size: 14px; color: var(--scr-muted); }
+.c-item > span:last-child { white-space: nowrap; }
+.c-bottom { position: absolute; left: 0; right: 0; bottom: 0; height: 104px; padding: 12px 20px 34px; background: var(--scr-bg); border-top: 1px solid var(--scr-edge); }
+.c-done { display: flex; align-items: center; justify-content: center; height: 56px; border-radius: 28px; background: var(--lime); color: var(--black); font-size: 17px; font-weight: 600; }
+
+/* Phones you can look at: hover lifts one, a tap or click opens it big (motion.js). */
+.fan { cursor: zoom-in; transition: transform 0.35s var(--ease, ease); }
+.fan:focus-visible { outline: none; }
+.fan:focus-visible .phone { outline: 3px solid var(--lime); outline-offset: 4px; }
+@media (hover: hover) and (min-width: 761px) {
+  .fan-center:hover { transform: translateX(-50%) translateY(-14px); }
+  .fan-left:hover { z-index: 4; transform: translateX(calc(-50% - 280px)) translateY(30px) rotate(-7deg); }
+  .fan-right:hover { z-index: 4; transform: translateX(calc(-50% + 280px)) translateY(30px) rotate(7deg); }
+}
+.viewer {
+  position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center;
+  background: rgba(12, 15, 10, 0.55); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  animation: viewer-in 0.25s ease both; cursor: zoom-out;
+}
+.viewer .showcase { cursor: default; animation: viewer-phone 0.35s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.viewer-close {
+  position: absolute; top: 18px; right: 18px; width: 44px; height: 44px; border-radius: 22px; border: none;
+  background: #FFFFFF; color: #0C0F0A; cursor: pointer; display: flex; align-items: center; justify-content: center;
+}
+.viewer-close svg { width: 18px; height: 18px; }
+@keyframes viewer-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes viewer-phone { from { opacity: 0; transform: translateY(30px) scale(0.96); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .viewer, .viewer .showcase { animation: none; } .fan { transition: none; } }
