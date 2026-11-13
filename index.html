@@ -5,19 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>arranko · Calorías y macros en una foto</title>
 <meta name="description" content="Haz una foto y conoce al instante las calorías y macros de lo que comes.">
-<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#F4F5F0" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0C0F0A" media="(prefers-color-scheme: dark)">
 <meta property="og:title" content="arranko · Calorías y macros en una foto">
 <meta property="og:description" content="Haz una foto y conoce al instante las calorías y macros de lo que comes.">
 <meta property="og:image" content="https://arranko.app/og.png">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" hreflang="es" href="https://arranko.app/"><link rel="alternate" hreflang="en" href="https://arranko.app/en/">
 <link rel="icon" href="/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preload" href="/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>
-/* Motion only when the script can run it; if motion.js never starts, show everything. */
+/* Light or dark: the person's choice from the switch, else the phone's setting. */
 (function () {
   var d = document.documentElement;
+  try { var t = localStorage.getItem("arranko-theme"); if (t === "light" || t === "dark") d.setAttribute("data-theme", t); } catch (e) {}
+  /* Motion only when the script can run it; if motion.js never starts, show everything. */
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) return;
   d.classList.add("motion");
   setTimeout(function () { if (!d.classList.contains("motion-ready")) d.classList.remove("motion"); }, 2500);
@@ -48,22 +51,25 @@
 })();
 </script>
 
-<div class="wrap">
-<header class="top">
-<a class="brand" href="/" aria-label="arranko, home"><span class="tile"><svg viewBox="34 46 134 116" aria-hidden="true" focusable="false"><g transform="skewX(-12) translate(22 0)" fill="currentColor"><rect class="c1" x="48" y="95" width="24" height="65" rx="11"/><rect class="c2" x="78" y="138" width="44" height="22" rx="11"/><rect class="c3" x="78" y="95" width="44" height="22" rx="11"/><rect class="c4" x="60" y="48" width="94" height="22" rx="11"/><rect class="c5" x="130" y="48" width="24" height="112" rx="11"/></g></svg></span><span>arranko</span></a>
-<nav aria-label="Pages"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/support/">Support</a><a href="/delete-account/">Delete account</a></nav>
+<header class="top-wrap">
+<div class="top">
+<a class="brand" href="/" aria-label="arranko, inicio"><span class="tile"><svg viewBox="34 46 134 116" aria-hidden="true" focusable="false"><g transform="skewX(-12) translate(22 0)" fill="currentColor"><rect class="c1" x="48" y="95" width="24" height="65" rx="11"/><rect class="c2" x="78" y="138" width="44" height="22" rx="11"/><rect class="c3" x="78" y="95" width="44" height="22" rx="11"/><rect class="c4" x="60" y="48" width="94" height="22" rx="11"/><rect class="c5" x="130" y="48" width="24" height="112" rx="11"/></g></svg></span><span>arranko</span></a>
+<nav class="menu" aria-label="Menu"><a href="#como-funciona">Cómo funciona</a><a href="#funciones">Funciones</a><a href="#preguntas">Preguntas</a></nav>
+<div class="actions">
+<button class="theme" type="button" aria-label="Cambiar entre modo claro y oscuro"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+<a class="lang" href="/en/" hreflang="en" lang="en" aria-label="English">EN</a>
+<a class="cta" href="https://www.instagram.com/arrankoapp/">Síguenos</a>
+</div>
+</div>
 </header>
-<main>
+<main class="wrap">
 <section class="hero" aria-labelledby="hero-title">
-<div>
+<div class="hero-left">
 <p class="eyebrow" data-intro>Muy pronto · iPhone y Android</p>
 <h1 class="display" id="hero-title"><span class="words"><span class="w"><span style="--i:0">Arranca</span></span> <span class="w accent"><span style="--i:1">con</span></span> <span class="w accent"><span style="--i:2">todo.</span></span></span></h1>
-<p class="lead" data-intro style="--d:0.45s">Haz una foto y conoce al instante las calorías y macros de lo que comes, para que tu nutrición esté a la altura de tu entrenamiento.</p>
-<div class="stores" data-intro style="--d:0.6s">
-<span class="store"><small>Muy pronto en</small><strong>App Store</strong></span>
-<span class="store"><small>Muy pronto en</small><strong>Google Play</strong></span>
+<a class="pill-cta" data-intro style="--d:0.5s" href="#como-funciona">Cómo funciona<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
 </div>
-</div>
+<div class="hero-phone">
 <figure class="showcase" aria-label="La pantalla Hoy de arranko: 864 de 2270 calorías, proteína 100 de 112 g, carbohidratos 90 de 314 g, grasas 10 de 63 g">
 <div class="phone" aria-hidden="true"></div>
 <div class="layer" aria-hidden="true">
@@ -95,66 +101,63 @@
 <span class="t-fab"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
 </div>
 </figure>
-</section>
-
-<div class="marquee" aria-hidden="true"><div class="marquee-track">
-<span>Running</span><span>Ciclismo</span><span>Pádel</span><span>Gym</span><span>Running</span><span>Ciclismo</span><span>Pádel</span><span>Gym</span>
-<span>Running</span><span>Ciclismo</span><span>Pádel</span><span>Gym</span><span>Running</span><span>Ciclismo</span><span>Pádel</span><span>Gym</span>
-</div></div>
-
-<section class="section" aria-labelledby="como">
-<div class="reveal">
-<h2 class="section-title" id="como">Registra en segundos.</h2>
-<p class="section-lead">Como te sea más fácil en cada momento. arranko cuenta las calorías y los macros por ti.</p>
 </div>
-<div class="steps stagger">
-<div class="card">
-<span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></span>
-<h3>Una foto</h3>
-<p>Haz una foto del plato y la IA reconoce los alimentos y las cantidades.</p>
-</div>
-<div class="card">
-<span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6v12M7 6v12M11 6v12M14 6v12M17 6v12M20 6v12"/></svg></span>
-<h3>El código de barras</h3>
-<p>Escanea un producto envasado y añade sus valores reales.</p>
-</div>
-<div class="card">
-<span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span>
-<h3>Tu voz o un texto</h3>
-<p>Di o escribe lo que comiste, como se lo contarías a un amigo.</p>
-</div>
+<div class="hero-right" data-intro style="--d:0.35s">
+<span class="spark" aria-hidden="true"></span>
+<p class="hero-lead">Haz una foto y conoce al instante las calorías y macros de lo que comes, para que tu nutrición esté a la altura de tu entrenamiento.</p>
+<div class="sports"><span>Running</span><span>Ciclismo</span><span>Pádel</span><span>Gym</span></div>
+<p class="hero-note">Sin dietas ni culpa: la comida es combustible.</p>
 </div>
 </section>
 
-<section class="band" aria-labelledby="hecha">
-<div class="reveal">
-<h2 class="section-title" id="hecha">Hecha para quien entrena.</h2>
-<p class="section-lead">La comida es combustible. arranko te ayuda a darle a tu cuerpo lo que necesita para rendir.</p>
-</div>
-<div class="features stagger">
-<div class="feature"><span class="n">01</span><div><h3>Objetivos a tu medida</h3><p>Calorías y macros calculados con tu cuerpo, tu actividad y tu meta. Nunca por debajo de lo que tu cuerpo gasta en reposo.</p></div></div>
-<div class="feature"><span class="n">02</span><div><h3>Proteína, carbohidratos y grasas</h3><p>Ves cómo vas en cada macro durante el día, de un vistazo.</p></div></div>
-<div class="feature"><span class="n">03</span><div><h3>Constancia</h3><p>Tu racha de días registrando y tu progreso de peso, sin culpa: un día por encima es solo un día.</p></div></div>
-<div class="feature"><span class="n">04</span><div><h3>Tus favoritos</h3><p>Guarda tus comidas de siempre y regístralas con un toque.</p></div></div>
+<section class="band-lime" aria-label="Disponibilidad">
+<div class="giant" aria-hidden="true"><div class="giant-track"><span>Arranca con todo ·</span><span>Arranca con todo ·</span><span>Arranca con todo ·</span><span>Arranca con todo ·</span><span>Arranca con todo ·</span><span>Arranca con todo ·</span><span>Arranca con todo ·</span><span>Arranca con todo ·</span><span>Arranca con todo ·</span><span>Arranca con todo ·</span><span>Arranca con todo ·</span><span>Arranca con todo ·</span></div></div>
+<div class="soon-card reveal">
+<p>Muy pronto en iPhone y Android</p>
+<div class="stores"><span class="store"><small>Muy pronto en</small><strong>App Store</strong></span><span class="store"><small>Muy pronto en</small><strong>Google Play</strong></span></div>
 </div>
 </section>
 
-<section class="promise reveal" aria-labelledby="datos">
-<h2 id="datos">Tus datos son tuyos.</h2>
-<ul>
-<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Sin anuncios y sin venta de datos.</span></li>
-<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Tus fotos de comida son privadas: solo tú las ves.</span></li>
-<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Guardados en la Unión Europea.</span></li>
-<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Borra tu cuenta y todo lo que contiene cuando quieras.</span></li>
-</ul>
-<p class="more"><a href="/privacy/">Lee la política de privacidad</a> · <a href="/support/">¿Necesitas ayuda?</a></p>
+<section class="statement reveal" aria-labelledby="statement-t">
+<span class="float f1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></span><span class="float f2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6v12M7 6v12M11 6v12M14 6v12M17 6v12M20 6v12"/></svg></span><span class="float f3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span><span class="float f4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c1.5 4 6 5.5 6 11a6 6 0 0 1-12 0c0-2.5 1.2-4 2.5-5 0 2 1 3 2 3.3C10 9 11 6 12 3z"/></svg></span>
+<h2 id="statement-t">Registrar lo que comes no debería llevar más tiempo que comerlo.</h2>
+<p>Una foto, un código de barras o unas palabras. arranko hace las cuentas por ti.</p>
+</section>
+
+<section class="section" id="como-funciona" aria-labelledby="how-t">
+<div class="center reveal"><p class="kicker">Cómo funciona</p><h2 class="section-title" id="how-t">Tres pasos y listo.</h2></div>
+<ol class="steps stagger"><li class="step"><span class="snum">01</span><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></span><h3>Registra como quieras</h3><p>Haz una foto del plato, escanea el código de barras o di lo que comiste.</p></li><li class="step"><span class="snum">02</span><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13 7l4 4"/></svg></span><h3>Revisa tu plato</h3><p>Ves cada alimento con su cantidad. Toca cualquiera para ajustarlo y todo se recalcula.</p></li><li class="step"><span class="snum">03</span><span class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20V10M12 20V4M19 20v-7"/></svg></span><h3>Mira cómo vas</h3><p>Calorías, proteína, carbohidratos y grasas del día, y tu racha, de un vistazo.</p></li></ol>
+</section>
+
+<section class="section" id="funciones" aria-labelledby="feat-t">
+<div class="center reveal"><p class="kicker">Funciones</p><h2 class="section-title" id="feat-t">Más que contar calorías.</h2><p class="section-lead">Todo lo que necesitas para que tu comida acompañe tu entreno.</p></div>
+<div class="feats stagger"><div class="feat"><span class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></span><div><h3>Foto con IA</h3><p>Reconoce los alimentos y estima las cantidades de tu plato.</p></div></div><div class="feat"><span class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6v12M7 6v12M11 6v12M14 6v12M17 6v12M20 6v12"/></svg></span><div><h3>Código de barras</h3><p>Los valores reales de la etiqueta de un producto envasado.</p></div></div><div class="feat"><span class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span><div><h3>Voz o texto</h3><p>Cuéntale lo que comiste, como se lo dirías a un amigo.</p></div></div><div class="feat"><span class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.8"/></svg></span><div><h3>Objetivos a tu medida</h3><p>Calculados con tu cuerpo, tu actividad y tu meta. Nunca por debajo de lo que gastas en reposo.</p></div></div><div class="feat"><span class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20V10M12 20V4M19 20v-7"/></svg></span><div><h3>Macros de un vistazo</h3><p>Proteína, carbohidratos y grasas frente a tu objetivo del día.</p></div></div><div class="feat"><span class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c1.5 4 6 5.5 6 11a6 6 0 0 1-12 0c0-2.5 1.2-4 2.5-5 0 2 1 3 2 3.3C10 9 11 6 12 3z"/></svg></span><div><h3>Tu racha</h3><p>Los días seguidos registrando. Un día por encima es solo un día.</p></div></div><div class="feat"><span class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18M4 16l5-5 4 3 7-7"/></svg></span><div><h3>Progreso de peso</h3><p>Tus pesajes en el tiempo, hacia tu meta.</p></div></div><div class="feat"><span class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.2 1.1 6.1L12 16.8l-5.4 2.9 1.1-6.1L3.2 9.4l6.1-.8z"/></svg></span><div><h3>Favoritos</h3><p>Tus comidas de siempre, registradas con un toque.</p></div></div><div class="feat"><span class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg></span><div><h3>Recordatorios</h3><p>Un aviso a tu hora para no olvidar registrar.</p></div></div></div>
+</section>
+
+<section class="section" id="preguntas" aria-labelledby="faq-t">
+<div class="center reveal"><p class="kicker">FAQ</p><h2 class="section-title" id="faq-t">Preguntas frecuentes</h2><p class="section-lead">Lo que más nos preguntan sobre arranko.</p></div>
+<div class="faq reveal"><details><summary>¿Qué es arranko?</summary><p>Una app para registrar lo que comes y ver al momento tus calorías y macros: proteína, carbohidratos y grasas. Está pensada para quien entrena y quiere que su nutrición acompañe su entrenamiento.</p></details><details><summary>¿Cómo sabe las calorías de una foto?</summary><p>Haces una foto del plato y la IA reconoce los alimentos y estima las cantidades. arranko calcula las calorías y los macros con su base de datos de alimentos. También puedes escanear un código de barras, decir lo que comiste o escribirlo.</p></details><details><summary>¿Son exactas las estimaciones?</summary><p>Son una estimación, y la app lo dice. Puedes tocar cualquier alimento para cambiar la cantidad, y todo se recalcula. Con el código de barras usas los valores reales de la etiqueta.</p></details><details><summary>¿Cómo calcula mis objetivos?</summary><p>Con tu edad, sexo, altura, peso, actividad y tu meta. Nunca te recomienda menos calorías de las que tu cuerpo gasta en reposo.</p></details><details><summary>¿Es gratis?</summary><p>Sí, puedes usarla gratis. El Plan Gratis incluye 10 registros con IA al mes y 5 favoritos, y registrar a mano o con código de barras no tiene límite. Premium amplía a 20 registros con IA al día, con 7 días de prueba gratis.</p></details><details><summary>¿Para quién es?</summary><p>Para personas de 16 años o más que entrenan: running, ciclismo, pádel, gym o lo que te mueva. No es una app de dietas: la comida es combustible.</p></details><details><summary>¿Mis datos están seguros?</summary><p>Se guardan en la Unión Europea, tus fotos de comida son privadas, no hay anuncios ni venta de datos, y puedes borrar tu cuenta y todo lo que contiene cuando quieras. Más en la <a href="/privacidad/">Política de privacidad</a>.</p></details><details><summary>¿En qué idioma está la app?</summary><p>Por ahora en inglés. Pronto en español y portugués.</p></details><details><summary>¿Cuándo sale?</summary><p>Muy pronto en iPhone y Android. Síguenos en Instagram para enterarte antes que nadie.</p></details></div>
+</section>
+
+<section class="final reveal" aria-labelledby="final-t">
+<h2 id="final-t">¿Arrancamos?</h2>
+<p>arranko llega muy pronto a iPhone y Android. Síguenos para enterarte antes que nadie.</p>
+<a class="pill-cta" href="https://www.instagram.com/arrankoapp/">Síguenos en Instagram<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
 </section>
 </main>
-<footer>
-<p>© 2026 arranko · <a href="mailto:support@arranko.app">support@arranko.app</a></p>
-<nav aria-label="Legal"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/support/">Support</a><a href="/delete-account/">Delete account</a></nav>
-</footer>
+<footer class="foot">
+<div class="wrap">
+<div class="foot-top">
+<div class="foot-brand"><span class="tile"><svg viewBox="34 46 134 116" aria-hidden="true" focusable="false"><g transform="skewX(-12) translate(22 0)" fill="currentColor"><rect class="c1" x="48" y="95" width="24" height="65" rx="11"/><rect class="c2" x="78" y="138" width="44" height="22" rx="11"/><rect class="c3" x="78" y="95" width="44" height="22" rx="11"/><rect class="c4" x="60" y="48" width="94" height="22" rx="11"/><rect class="c5" x="130" y="48" width="24" height="112" rx="11"/></g></svg></span><p>Calorías y macros en una foto, para quien entrena.</p></div>
+<div class="foot-links">
+<nav aria-label="Legal"><a href="/privacidad/">Privacidad</a><a href="/terminos/">Términos</a><a href="/ayuda/">Ayuda</a><a href="/borrar-cuenta/">Borrar cuenta</a></nav>
+<p><a href="mailto:support@arranko.app">support@arranko.app</a> · <a href="https://www.instagram.com/arrankoapp/">Instagram @arrankoapp</a></p>
 </div>
+</div>
+<p class="foot-word" aria-hidden="true">arranko</p>
+<p class="foot-copy">© 2026 arranko</p>
+</div>
+</footer>
 <script src="/motion.js" defer></script>
 </body>
 </html>
