@@ -123,6 +123,9 @@ h2.section-title { font-size: clamp(34px, 5.4vw, 56px); margin: 0 0 14px; font-w
 /* Room on both sides of each word's mask, so the slanted letters (the A of ARRANCA) aren't cut. */
 .hero h1 .words .w { padding: 0 0.1em 0.06em 0.12em; margin: 0 -0.1em -0.06em -0.12em; }
 .hero h1 .accent > span { background: linear-gradient(transparent 58%, var(--lime) 58%, var(--lime) 92%, transparent 92%); }
+/* Dark mode: white letters over the lime stroke can't be read, so "con todo." is lime text, no stroke. */
+:root[data-theme="dark"] .hero h1 .accent > span { background: none; color: var(--lime); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .hero h1 .accent > span { background: none; color: var(--lime); } }
 .hero h1 .accent { padding-right: 0.06em; }
 .hero-soon { margin-top: 32px; }
 .hero-soon-label { margin: 0 0 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
@@ -436,9 +439,8 @@ th { color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: 0.1
 .c-title { text-align: center; font-weight: 600; font-size: 17px; }
 .c-fav { justify-self: end; width: 44px; height: 44px; border-radius: 22px; border: 1px solid var(--scr-edge); background: var(--scr-glass); color: var(--scr-muted); display: flex; align-items: center; justify-content: center; }
 .c-scroll { position: absolute; top: 100px; bottom: 104px; left: 0; right: 0; overflow-y: auto; padding: 8px 20px 24px; display: flex; flex-direction: column; gap: 16px; scrollbar-width: none; }
-/* In the hero the screen doesn't scroll by itself, so a swipe on it moves the carousel; it scrolls
-   once the phone is opened big. */
-.hero-fan .c-scroll { overflow: hidden; }
+/* The Nutrition screen scrolls up and down inside the phone; a sideways swipe on it still moves the
+   mobile carousel, and at its end the page keeps scrolling. */
 .c-scroll::-webkit-scrollbar { display: none; }
 .c-photo { width: 350px; height: 350px; border-radius: 28px; object-fit: cover; display: block; flex-shrink: 0; }
 .c-pills { display: flex; flex-wrap: wrap; gap: 8px; }
