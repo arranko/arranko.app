@@ -476,7 +476,29 @@ th { color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: 0.1
   .fan-right:hover { z-index: 4; transform: translateX(calc(-50% + 260px)) translateY(-10px) rotate(4deg) scale(1.15); }
 }
 /* Touch: a quick zoom under the finger before the phone opens big. */
-@media (hover: none) { .fan:active { scale: 1.06; } }
+/* Phones (narrow screens): the fan becomes a swipe carousel. Each phone snaps to the centre; the one in
+   the centre is full size, the others shrink and fade (motion.js sets --z and --o as you swipe). */
+@media (max-width: 760px) {
+  .hero-fan {
+    position: relative; height: auto; max-width: none; margin: 28px -20px 24px; padding: 24px calc(50% - 115px) 34px;
+    display: flex; gap: 6px; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory;
+    scrollbar-width: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain;
+  }
+  .hero-fan::-webkit-scrollbar { display: none; }
+  .fan, .fan-left, .fan-center, .fan-right {
+    position: relative; left: auto; bottom: auto; transform: none; flex: 0 0 auto;
+    scroll-snap-align: center; scroll-snap-stop: always;
+    scale: var(--z, 0.84); opacity: var(--o, 0.55); transition: scale 0.15s linear, opacity 0.15s linear;
+  }
+  .fan-center .showcase, .fan-left .showcase, .fan-right .showcase { --s: 0.56; }
+  .fan-dots { display: flex; justify-content: center; gap: 8px; margin: 0 0 40px; }
+  .fan-dots button { width: 8px; height: 8px; padding: 0; border: none; border-radius: 4px; background: var(--line); cursor: pointer; transition: width 0.25s, background 0.25s; }
+  .fan-dots button[aria-current="true"] { width: 24px; background: var(--text); }
+  /* Make each dot easy to tap without looking bigger. */
+  .fan-dots button { position: relative; }
+  .fan-dots button::after { content: ""; position: absolute; inset: -14px -8px; }
+}
+@media (min-width: 761px) { .fan-dots { display: none; } }
 .viewer {
   position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center;
   background: rgba(12, 15, 10, 0.55); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);

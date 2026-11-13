@@ -22,8 +22,8 @@
     if (!fig) return;
     var clone = fig.cloneNode(true);
     clone.querySelectorAll("[data-count]").forEach(function (n) { n.textContent = n.getAttribute("data-count"); });
-    var ring = clone.querySelector(".t-ring"); if (ring) ring.setAttribute("stroke-dashoffset", "194.03");
-    var bars = clone.querySelectorAll(".t-bar"), widths = ["75%", "35%", "15.9%"];
+    var ring = clone.querySelector(".t-ring"); if (ring) ring.setAttribute("stroke-dashoffset", "220.60");
+    var bars = clone.querySelectorAll(".t-bar"), widths = ["68.8%", "19.1%", "23.8%"];
     bars.forEach(function (b, i) { b.setAttribute("width", widths[i] || b.getAttribute("width")); });
     var s = Math.min(1, (window.innerHeight - 48) / 864, (window.innerWidth - 32) / 410);
     clone.style.setProperty("--s", s.toFixed(3));
@@ -62,6 +62,50 @@
     fan.addEventListener("click", function () { openViewer(fan); });
     fan.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openViewer(fan); } });
   });
+
+  // Phones on narrow screens: a swipe carousel. The phone nearest the centre grows to full size,
+  // the others shrink and fade; dots show and jump to each phone. Starts on the middle phone.
+  var strip = document.querySelector(".hero-fan");
+  var narrow = window.matchMedia("(max-width: 760px)");
+  if (strip && fans.length) {
+    var dots = document.createElement("div");
+    dots.className = "fan-dots";
+    var dotLabel = d.lang === "es" ? "Pantalla %n de 3" : "Screen %n of 3";
+    fans.forEach(function (fan, i) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.setAttribute("aria-label", dotLabel.replace("%n", i + 1));
+      b.addEventListener("click", function () { centre(i, true); });
+      dots.appendChild(b);
+    });
+    strip.parentNode.insertBefore(dots, strip.nextSibling);
+    function centre(i, smooth) {
+      var fan = fans[i];
+      var left = fan.offsetLeft + fan.offsetWidth / 2 - strip.clientWidth / 2;
+      strip.scrollTo({ left: left, behavior: smooth ? "smooth" : "auto" });
+    }
+    var raf = 0;
+    function update() {
+      raf = 0;
+      if (!narrow.matches) {
+        fans.forEach(function (f) { f.style.removeProperty("--z"); f.style.removeProperty("--o"); });
+        return;
+      }
+      var mid = strip.scrollLeft + strip.clientWidth / 2, best = 0, bestDist = Infinity;
+      fans.forEach(function (f, i) {
+        var dist = Math.abs(f.offsetLeft + f.offsetWidth / 2 - mid);
+        var k = Math.min(1, dist / f.offsetWidth);
+        f.style.setProperty("--z", (1 - 0.16 * k).toFixed(3));
+        f.style.setProperty("--o", (1 - 0.45 * k).toFixed(3));
+        if (dist < bestDist) { bestDist = dist; best = i; }
+      });
+      dots.querySelectorAll("button").forEach(function (b, i) { b.setAttribute("aria-current", i === best ? "true" : "false"); });
+    }
+    strip.addEventListener("scroll", function () { if (!raf) raf = requestAnimationFrame(update); }, { passive: true });
+    window.addEventListener("resize", function () { if (narrow.matches) centre(1, false); update(); });
+    if (narrow.matches) centre(1, false);
+    update();
+  }
 
   // The menu button on narrower screens: opens and closes the menu panel; a tapped link,
   // a tap outside or Escape closes it.
