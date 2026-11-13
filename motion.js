@@ -2,6 +2,16 @@
    Runs only when <head> switched motion on (html.motion). No libraries, no tracking. */
 (function () {
   var d = document.documentElement;
+
+  // The light/dark switch in the header: remembers the choice on this device.
+  var themeBtn = document.querySelector(".theme");
+  if (themeBtn) themeBtn.addEventListener("click", function () {
+    var current = d.getAttribute("data-theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    var next = current === "dark" ? "light" : "dark";
+    d.setAttribute("data-theme", next);
+    try { localStorage.setItem("arranko-theme", next); } catch (e) {}
+  });
+
   if (!d.classList.contains("motion")) return;
   d.classList.add("motion-ready");
 

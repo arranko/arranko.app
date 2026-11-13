@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Política de privacidad · arranko</title>
+<meta name="description" content="Qué guarda arranko, para qué, quién nos ayuda y cómo ver, exportar o borrar tus datos.">
+<meta name="theme-color" content="#F4F5F0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0C0F0A" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Política de privacidad · arranko">
+<meta property="og:description" content="Qué guarda arranko, para qué, quién nos ayuda y cómo ver, exportar o borrar tus datos.">
+<meta property="og:image" content="https://arranko.app/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" hreflang="es" href="https://arranko.app/privacidad/"><link rel="alternate" hreflang="en" href="https://arranko.app/privacy/">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<script>
+/* Light or dark: the person's choice from the switch, else the phone's setting. */
+(function () {
+  var d = document.documentElement;
+  try { var t = localStorage.getItem("arranko-theme"); if (t === "light" || t === "dark") d.setAttribute("data-theme", t); } catch (e) {}
+  /* Motion only when the script can run it; if motion.js never starts, show everything. */
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) return;
+  d.classList.add("motion");
+  setTimeout(function () { if (!d.classList.contains("motion-ready")) d.classList.remove("motion"); }, 2500);
+})();
+</script>
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/motion.css">
+</head>
+<body class="inner">
+
+<div class="draft">Borrador: estos textos esperan aprobación.</div>
+<header class="top-wrap">
+<div class="top">
+<a class="brand" href="/" aria-label="arranko, inicio"><span class="tile"><svg viewBox="34 46 134 116" aria-hidden="true" focusable="false"><g transform="skewX(-12) translate(22 0)" fill="currentColor"><rect class="c1" x="48" y="95" width="24" height="65" rx="11"/><rect class="c2" x="78" y="138" width="44" height="22" rx="11"/><rect class="c3" x="78" y="95" width="44" height="22" rx="11"/><rect class="c4" x="60" y="48" width="94" height="22" rx="11"/><rect class="c5" x="130" y="48" width="24" height="112" rx="11"/></g></svg></span><span>arranko</span></a>
+<nav class="menu" aria-label="Menu"><a href="/#como-funciona">Cómo funciona</a><a href="/#funciones">Funciones</a><a href="/#preguntas">Preguntas</a></nav>
+<div class="actions">
+<button class="theme" type="button" aria-label="Cambiar entre modo claro y oscuro"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+<a class="lang" href="/privacy/" hreflang="en" lang="en" aria-label="English">EN</a>
+<a class="cta" href="https://www.instagram.com/arrankoapp/">Síguenos</a>
+</div>
+</div>
+</header>
+<main class="wrap">
+<section class="page-head"><p class="eyebrow">Legal</p><h1 class="display">Política de privacidad</h1><p class="lead">arranko te ayuda a registrar lo que comes y ver tus calorías y macros. Para eso guarda algunos datos personales, incluidos datos sobre tu cuerpo. Aquí está qué guardamos, para qué, quién nos ayuda y cómo mantienes el control.</p><p class="meta">Última actualización: 13 de noviembre de 2026</p></section><div class="doc"><nav class="toc" aria-label="En esta página"><p>En esta página</p><ol><li><a href="#quien-esta-detras-de-arranko">Quién está detrás de arranko</a></li><li><a href="#que-guardamos">Qué guardamos</a></li><li><a href="#por-que-podemos-usarlos">Por qué podemos usarlos</a></li><li><a href="#estimaciones-con-ia">Estimaciones con IA</a></li><li><a href="#codigos-de-barras-y-recordatorios">Códigos de barras y recordatorios</a></li><li><a href="#informes-de-fallos-y-uso-anonimo">Informes de fallos y uso anónimo</a></li><li><a href="#quien-nos-ayuda">Quién nos ayuda</a></li><li><a href="#cuanto-tiempo-los-guardamos">Cuánto tiempo los guardamos</a></li><li><a href="#tus-derechos">Tus derechos</a></li><li><a href="#seguridad">Seguridad</a></li><li><a href="#edad">Edad</a></li><li><a href="#esta-web">Esta web</a></li><li><a href="#cambios">Cambios</a></li></ol></nav><article class="prose"><div class="box lime">
+<p class="box-title">En resumen</p>
+<ul>
+<li>Guardamos solo lo que la app necesita para funcionar: tu cuenta, tu perfil, tus objetivos y lo que registras.</li>
+<li>Una foto, una descripción escrita o una nota de voz se envía a Gemini, la IA de Google, solo cuando pides una estimación y solo después de que dijiste que sí en la app.</li>
+<li>Tus fotos de comida son privadas: solo tú puedes verlas.</li>
+<li>Tus datos se guardan en la Unión Europea. Nunca los vendemos, no hay anuncios y no los usamos para entrenar ninguna IA.</li>
+<li>Puedes borrar tu cuenta y todo lo que contiene cuando quieras, desde la app.</li>
+</ul>
+</div>
+
+<h2 id="quien-esta-detras-de-arranko">Quién está detrás de arranko</h2>
+<p>arranko lo gestiona <strong>[NOMBRE LEGAL COMPLETO]</strong>, una persona física con residencia en Portugal, que es la responsable del tratamiento de tus datos personales. Para cualquier cosa sobre tus datos, escribe a <a href="mailto:privacy@arranko.app">privacy@arranko.app</a>.</p>
+<p>Somos un equipo muy pequeño y no hemos nombrado un delegado de protección de datos; privacy@arranko.app llega directamente a la persona responsable.</p>
+
+<h2 id="que-guardamos">Qué guardamos</h2>
+<div class="table-scroll">
+<table>
+<thead><tr><th>Datos</th><th>Para qué</th></tr></thead>
+<tbody>
+<tr><td><strong>Cuenta:</strong> tu correo y tu contraseña (guardada solo cifrada, nunca legible)</td><td>Para que inicies sesión y para enviarte los correos de la cuenta: confirmar tu correo, restablecer tu contraseña y avisarte cuando cambia.</td></tr>
+<tr><td><strong>Perfil:</strong> edad, sexo, altura, peso, nivel de actividad, objetivo, unidades, día de descanso y recordatorios</td><td>Para calcular tus objetivos de calorías y macros y mostrarlos como elegiste.</td></tr>
+<tr><td><strong>Lo que registras:</strong> comidas (nombre, cantidad, calorías, proteína, carbohidratos, grasas, comida del día y fecha), las fotos que añades, favoritos, pesajes, tu racha y tus insignias</td><td>Eso es la app: tu día, tu historial y tu progreso.</td></tr>
+<tr><td><strong>Plan y uso:</strong> si tienes Premium y cuántas estimaciones con IA usaste hoy y este mes</td><td>Para aplicar con justicia los límites del Plan Gratis y de Premium.</td></tr>
+<tr><td><strong>Alimentos que no encontramos:</strong> solo el nombre del alimento, sin nada que lo relacione contigo</td><td>Para añadir a nuestra base de datos los alimentos que faltan.</td></tr>
+</tbody>
+</table>
+</div>
+<p>La app también guarda una copia de tus datos en tu teléfono para funcionar sin conexión. Al cerrar sesión o borrar la app, se elimina del teléfono.</p>
+<p>arranko no se conecta a Apple Salud ni a Health Connect de Google, no usa tu ubicación ni tus contactos, y no tiene cookies ni rastreadores publicitarios.</p>
+
+<h2 id="por-que-podemos-usarlos">Por qué podemos usarlos</h2>
+<div class="table-scroll">
+<table>
+<thead><tr><th>Qué hacemos</th><th>Base legal (RGPD)</th></tr></thead>
+<tbody>
+<tr><td>Gestionar tu cuenta y las funciones de la app</td><td>Nuestro contrato contigo (artículo 6(1)(b))</td></tr>
+<tr><td>Guardar tu peso, altura, edad, sexo y comidas, que son datos de salud</td><td>Tu consentimiento explícito, dado en la app (artículo 9(2)(a))</td></tr>
+<tr><td>Enviar una comida a la IA para estimarla</td><td>Tu consentimiento explícito, pedido la primera vez y modificable en Ajustes</td></tr>
+<tr><td>Informes de fallos y la seguridad del servicio</td><td>Nuestro interés legítimo en una app que funcione y sea segura (artículo 6(1)(f))</td></tr>
+<tr><td>Recuentos de uso anónimos</td><td>Tu consentimiento, que puedes retirar con Compartir uso anónimo en Ajustes</td></tr>
+<tr><td>Guardar los registros que exige la ley</td><td>Obligación legal (artículo 6(1)(c))</td></tr>
+</tbody>
+</table>
+</div>
+<p>Puedes retirar un consentimiento cuando quieras. No afecta a lo ocurrido antes; en el caso de los datos de salud, retirarlo significa borrar tu cuenta, porque la app no puede funcionar sin ellos.</p>
+
+<h2 id="estimaciones-con-ia">Estimaciones con IA</h2>
+<p>Cuando pides a arranko que estime una comida a partir de una foto, una descripción escrita o una nota de voz, la enviamos a través de nuestro servidor a <strong>Google Gemini</strong>, la IA de Google, que devuelve los alimentos y las cantidades que ve. Esto ocurre solo cuando pides una estimación y solo después de que dijiste que sí a la pregunta que la app muestra la primera vez. Puedes desactivarlo en Ajustes.</p>
+<p>Usamos el servicio de pago de Google, en el que Google no usa lo que enviamos para mejorar sus productos. Google puede guardarlo un tiempo limitado para detectar abusos. No guardamos tus notas de voz; una foto se guarda solo si guardas la comida con ella. No usamos tus datos para entrenar ninguna IA.</p>
+<p>Una estimación es una sugerencia que siempre puedes cambiar, y tus objetivos salen de fórmulas estándar con los datos que nos das. arranko no toma ninguna decisión sobre ti con efectos legales o igual de importantes.</p>
+
+<h2 id="codigos-de-barras-y-recordatorios">Códigos de barras y recordatorios</h2>
+<p>Cuando escaneas un código de barras, la app busca el producto en <strong>Open Food Facts</strong>, una base de datos de alimentos pública y gratuita. Solo se envía el número del código, nada sobre ti.</p>
+<p>Los recordatorios de comidas y de pesaje se programan en tu propio teléfono; no enviamos notificaciones desde un servidor ni guardamos un identificador de notificaciones.</p>
+
+<h2 id="informes-de-fallos-y-uso-anonimo">Informes de fallos y uso anónimo</h2>
+<p>Si la app falla, envía un informe para que podamos arreglarlo: el error, la versión de la app y el modelo del teléfono, nunca tus comidas, fotos ni datos del cuerpo. Usamos <strong>Sentry</strong>, con servidores en la UE.</p>
+<p>La app también cuenta cómo se usa, por ejemplo qué pantallas se abren y si la gente vuelve, para mejorarla. Estos recuentos usan un identificador aleatorio que no es tu nombre ni tu correo, y los guarda <strong>PostHog</strong> en sus servidores de la UE. Puedes pararlos cuando quieras con <strong>Compartir uso anónimo</strong> en Ajustes.</p>
+
+<h2 id="quien-nos-ayuda">Quién nos ayuda</h2>
+<p>Estos servicios tratan datos por encargo nuestro, solo para hacer su trabajo y con acuerdos de tratamiento de datos:</p>
+<div class="table-scroll">
+<table>
+<thead><tr><th>Servicio</th><th>Para qué</th><th>Dónde</th></tr></thead>
+<tbody>
+<tr><td>Supabase</td><td>Base de datos, inicio de sesión y fotos</td><td>UE (Irlanda)</td></tr>
+<tr><td>Google Gemini</td><td>Estimaciones de comidas con IA</td><td>Servidores de Google, que pueden estar fuera de la UE</td></tr>
+<tr><td>Resend</td><td>Correos de la cuenta</td><td>Estados Unidos</td></tr>
+<tr><td>Sentry</td><td>Informes de fallos</td><td>UE (Alemania)</td></tr>
+<tr><td>PostHog</td><td>Recuentos de uso anónimos</td><td>UE (Alemania)</td></tr>
+<tr><td>Apple y Google</td><td>Tiendas de apps y pagos de Premium, con sus propias políticas de privacidad</td><td>Sus propios servidores</td></tr>
+</tbody>
+</table>
+</div>
+<p>Cuando los datos salen de la UE, los protegen las cláusulas contractuales tipo de la Comisión Europea o el Marco de Privacidad de Datos UE-EE. UU.</p>
+<p>Nunca vendemos tus datos, nunca los compartimos con anunciantes y nunca los usamos para mostrar anuncios. Solo los compartimos con la policía o un juzgado si la ley lo exige.</p>
+
+<h2 id="cuanto-tiempo-los-guardamos">Cuánto tiempo los guardamos</h2>
+<ul>
+<li><strong>Tu cuenta y todo lo que registraste:</strong> hasta que borres tu cuenta. Al borrarla se elimina al momento; nuestras copias de seguridad se sobrescriben en 7 días.</li>
+<li><strong>Informes de fallos:</strong> hasta 90 días.</li>
+<li><strong>Recuentos de uso anónimos:</strong> hasta 12 meses.</li>
+<li><strong>Correos de la cuenta:</strong> Resend guarda un registro de cada correo enviado hasta 30 días.</li>
+<li><strong>Correos que nos envías:</strong> el tiempo necesario para ayudarte, y como máximo 2 años.</li>
+</ul>
+
+<h2 id="tus-derechos">Tus derechos</h2>
+<p>Según el RGPD puedes:</p>
+<ul>
+<li><strong>Ver</strong> los datos que guardamos sobre ti y <strong>recibir una copia</strong> en un formato común que puedas llevar a otro sitio.</li>
+<li><strong>Corregirlos:</strong> la mayoría puedes cambiarlos tú en la app.</li>
+<li><strong>Borrarlos:</strong> Ajustes → Borrar cuenta, o mira <a href="/borrar-cuenta/">Borrar tu cuenta</a>.</li>
+<li><strong>Retirar tu consentimiento</strong> a las estimaciones con IA (Ajustes) o al uso anónimo (Compartir uso anónimo en Ajustes).</li>
+<li><strong>Oponerte o limitar</strong> cómo usamos tus datos.</li>
+</ul>
+<p>Escribe a <a href="mailto:privacy@arranko.app">privacy@arranko.app</a> desde el correo de tu cuenta. Respondemos en un mes como máximo. Si crees que hicimos algo mal, también puedes reclamar ante la autoridad portuguesa de protección de datos, la <a href="https://www.cnpd.pt">CNPD</a>, o ante la de tu país.</p>
+
+<h2 id="seguridad">Seguridad</h2>
+<p>Tus datos viajan cifrados (HTTPS) y la base de datos solo deja que cada cuenta lea sus propios datos. Las fotos de comida son privadas y se muestran con enlaces que caducan en una hora.</p>
+<p>Si alguna vez una brecha de seguridad pone en riesgo tus datos, avisamos a la CNPD en 72 horas y a ti sin demora cuando el riesgo para ti sea alto, como exige el RGPD.</p>
+
+<h2 id="edad">Edad</h2>
+<p>arranko es para personas de 16 años o más. Si crees que alguien más joven tiene una cuenta, escríbenos y la borraremos.</p>
+
+<h2 id="esta-web">Esta web</h2>
+<p>arranko.app no usa cookies, ni analítica, ni rastreadores, y sus fuentes se cargan desde arranko.app. Está alojada en GitHub Pages, que puede registrar las direcciones IP de las visitas por seguridad.</p>
+
+<h2 id="cambios">Cambios</h2>
+<p>Si cambiamos esta política, actualizamos la fecha de arriba. Si el cambio es importante, por ejemplo un nuevo servicio que trate tus datos, te avisamos en la app antes de que se aplique.</p></article></div>
+</main>
+<footer class="foot">
+<div class="wrap">
+<div class="foot-top">
+<div class="foot-brand"><span class="tile"><svg viewBox="34 46 134 116" aria-hidden="true" focusable="false"><g transform="skewX(-12) translate(22 0)" fill="currentColor"><rect class="c1" x="48" y="95" width="24" height="65" rx="11"/><rect class="c2" x="78" y="138" width="44" height="22" rx="11"/><rect class="c3" x="78" y="95" width="44" height="22" rx="11"/><rect class="c4" x="60" y="48" width="94" height="22" rx="11"/><rect class="c5" x="130" y="48" width="24" height="112" rx="11"/></g></svg></span><p>Calorías y macros en una foto, para quien entrena.</p></div>
+<div class="foot-links">
+<nav aria-label="Legal"><a href="/privacidad/">Privacidad</a><a href="/terminos/">Términos</a><a href="/ayuda/">Ayuda</a><a href="/borrar-cuenta/">Borrar cuenta</a></nav>
+<p><a href="mailto:support@arranko.app">support@arranko.app</a> · <a href="https://www.instagram.com/arrankoapp/">Instagram @arrankoapp</a></p>
+</div>
+</div>
+<p class="foot-word" aria-hidden="true">arranko</p>
+<p class="foot-copy">© 2026 arranko</p>
+</div>
+</footer>
+<script src="/motion.js" defer></script>
+</body>
+</html>
