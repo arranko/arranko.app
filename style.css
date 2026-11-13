@@ -295,7 +295,7 @@ th { color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: 0.1
 .foot-brand { display: flex; gap: 14px; align-items: center; max-width: 360px; }
 .foot-brand .tile { background: var(--lime); color: var(--black); }
 .foot-brand p { margin: 0; color: #A6ABA2; }
-.foot-links nav { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-bottom: 12px; font-weight: 600; }
+.foot-links nav { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-bottom: 14px; font-weight: 400; font-size: 15px; }
 .foot-links nav a { text-decoration: none; }
 .foot-links nav a:hover { text-decoration: underline; text-decoration-color: var(--lime); }
 .social { display: flex; gap: 10px; }
