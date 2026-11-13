@@ -1,0 +1,121 @@
+/* arranko.app: one stylesheet for every page. Brand: "Estrategia de marca"
+   (black #0C0F0A 70 %, lime #DBFF00 20 %, support 10 %; Archivo only). */
+
+@font-face {
+  font-family: "Archivo";
+  src: url("fonts/archivo-latin-wdth-normal.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Archivo";
+  src: url("fonts/archivo-latin-wdth-italic.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --black: #0C0F0A;
+  --lime: #DBFF00;
+  --text: #F2F3F5;
+  --muted: #A6ABA2;
+  --card: #1A1D18;
+  --line: #33382F;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--black);
+  color: var(--text);
+  font-family: "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+a { color: var(--lime); text-underline-offset: 3px; }
+a:hover { color: var(--text); }
+a:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; border-radius: 4px; }
+
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+
+/* Header */
+.top {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 20px 0; border-bottom: 2px solid var(--lime);
+}
+.brand { display: inline-flex; align-items: baseline; gap: 10px; color: var(--text); text-decoration: none; }
+.brand svg { width: 34px; height: 30px; flex-shrink: 0; align-self: center; }
+.brand span { font-weight: 900; font-style: italic; font-stretch: 62%; font-size: 34px; line-height: 1; }
+.top nav { display: flex; flex-wrap: wrap; gap: 4px 18px; font-size: 15px; font-weight: 600; }
+.top nav a { color: var(--muted); text-decoration: none; }
+.top nav a:hover, .top nav a[aria-current="page"] { color: var(--text); }
+
+/* Text pages */
+main { padding: 40px 0 56px; }
+.eyebrow { margin: 0 0 8px; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--lime); }
+h1 {
+  margin: 0 0 12px; font-weight: 900; font-style: italic; font-stretch: 62%;
+  font-size: clamp(44px, 11vw, 72px); line-height: 0.95; text-transform: uppercase;
+}
+h2 {
+  margin: 44px 0 10px; font-weight: 900; font-stretch: 62%; font-size: 28px;
+  line-height: 1.1; text-transform: uppercase; letter-spacing: 0.02em;
+}
+h3 { margin: 24px 0 6px; font-size: 18px; font-weight: 700; }
+p, ul, ol { margin: 0 0 14px; }
+ul, ol { padding-left: 22px; }
+li { margin-bottom: 6px; }
+.meta { color: var(--muted); font-size: 15px; }
+.lead { font-size: 19px; color: var(--text); }
+strong { font-weight: 700; }
+
+.box { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 20px 22px; margin: 20px 0; }
+.box p:last-child, .box ul:last-child, .box ol:last-child { margin-bottom: 0; }
+
+.draft {
+  background: var(--lime); color: var(--black); font-size: 14px; font-weight: 700;
+  text-align: center; padding: 8px 16px;
+}
+
+table { width: 100%; border-collapse: collapse; margin: 8px 0 18px; font-size: 15px; }
+th, td { text-align: left; vertical-align: top; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--line); }
+th { color: var(--muted); font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.table-scroll { overflow-x: auto; }
+
+/* Home */
+.hero { padding: 56px 0 40px; }
+.hero h1 { font-size: clamp(56px, 16vw, 112px); color: var(--lime); }
+.hero .lead { font-size: clamp(20px, 4.6vw, 26px); line-height: 1.35; max-width: 620px; margin-top: 20px; }
+.hero .claim { font-weight: 800; font-stretch: 75%; font-size: 22px; color: var(--muted); margin-top: 24px; }
+.soon {
+  display: inline-block; margin-top: 12px; padding: 10px 18px; border-radius: 999px;
+  border: 2px solid var(--text); font-weight: 700; font-size: 15px;
+}
+.links { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; padding: 8px 0 56px; }
+.links a {
+  display: block; min-height: 64px; padding: 18px 20px; border-radius: 18px;
+  background: var(--card); border: 1px solid var(--line); color: var(--text);
+  text-decoration: none; font-weight: 700;
+}
+.links a span { display: block; font-size: 14px; font-weight: 500; color: var(--muted); }
+.links a:hover { border-color: var(--lime); }
+
+/* Footer */
+footer { border-top: 1px solid var(--line); padding: 24px 0 40px; color: var(--muted); font-size: 14px; }
+footer nav { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-bottom: 10px; }
+footer a { color: var(--muted); }
+footer a:hover { color: var(--text); }
+
+@media (max-width: 560px) {
+  .top { flex-direction: column; align-items: flex-start; }
+  body { font-size: 16px; }
+}
