@@ -9,6 +9,12 @@ import re
 import unicodedata
 
 OUT = pathlib.Path(__file__).resolve().parent.parent
+
+def version(name):
+    """A short fingerprint of a file, added to its address so browsers fetch it again when it changes."""
+    import hashlib
+    return hashlib.sha1((OUT / name).read_bytes()).hexdigest()[:8]
+
 BODIES = pathlib.Path(__file__).parent / "bodies"
 DRAFT = True  # "waiting for approval" banner on the legal pages until the founder approves them (ARR-32)
 UPDATED = {"es": "13 de noviembre de 2026", "en": "13 November 2026"}
@@ -211,8 +217,8 @@ for key, langs in PAGES.items():
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preload" href="/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
 {HEAD_SCRIPT}
-<link rel="stylesheet" href="/style.css">
-<link rel="stylesheet" href="/motion.css">
+<link rel="stylesheet" href="/style.css?v={version('style.css')}">
+<link rel="stylesheet" href="/motion.css?v={version('motion.css')}">
 </head>
 <body class="{body_class}">
 {splash}
@@ -244,7 +250,7 @@ for key, langs in PAGES.items():
 <p class="foot-copy">© 2026 arranko</p>
 </div>
 </footer>
-<script src="/motion.js" defer></script>
+<script src="/motion.js?v={version('motion.js')}" defer></script>
 </body>
 </html>
 """
