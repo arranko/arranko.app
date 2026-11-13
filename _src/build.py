@@ -16,7 +16,7 @@ ISO = ('<g transform="skewX(-12) translate(22 0)" fill="#DBFF00">'
        '<rect class="c1" x="48" y="95" width="24" height="65" rx="11"/><rect class="c2" x="78" y="138" width="44" height="22" rx="11"/>'
        '<rect class="c3" x="78" y="95" width="44" height="22" rx="11"/><rect class="c4" x="60" y="48" width="94" height="22" rx="11"/>'
        '<rect class="c5" x="130" y="48" width="24" height="112" rx="11"/></g>')
-LOGO = '<svg viewBox="34 46 134 116" aria-hidden="true" focusable="false">%s</svg>' % ISO
+LOGO = '<svg viewBox="34 46 134 116" aria-hidden="true" focusable="false">%s</svg>' % ISO.replace("#DBFF00", "#0C0F0A")
 
 # file, lang, <title>, description, nav key, page head (eyebrow, h1, lead, show date), table of contents
 PAGES = [
@@ -69,8 +69,19 @@ def with_toc(body):
     return body, toc
 
 
+# The approved splash (final design canvas, "Splash · final", dark version): the capsules light
+# clockwise every 0.15 s, the box leans back, glides left with speed lines while "arranko" fades
+# up letter by letter, then everything fades into the page at about 3 s.
 SPLASH = """<div class="splash" id="splash" aria-hidden="true">
-<div class="splash-mark"><svg viewBox="34 46 134 116" focusable="false">%s</svg><span>arranko</span></div>
+<div class="splash-logo">
+<span class="grp">
+<span class="streak-at" style="top:18px"><span class="streak s1"></span></span>
+<span class="streak-at" style="top:31px"><span class="streak s2"></span></span>
+<span class="streak-at" style="top:44px"><span class="streak s3"></span></span>
+<span class="sbox"><svg viewBox="34 46 134 116" focusable="false"><g transform="skewX(-12) translate(22 0)" fill="#0C0F0A"><rect class="cap c1" x="48" y="95" width="24" height="65" rx="11"/><rect class="cap c2" x="78" y="138" width="44" height="22" rx="11"/><rect class="cap c3" x="78" y="95" width="44" height="22" rx="11"/><rect class="cap c4" x="60" y="48" width="94" height="22" rx="11"/><rect class="cap c5" x="130" y="48" width="24" height="112" rx="11"/></g></svg></span>
+</span>
+<span class="word"><span class="l l1">a</span><span class="l l2">r</span><span class="l l3">r</span><span class="l l4">a</span><span class="l l5">n</span><span class="l l6">k</span><span class="l l7">o</span></span>
+</div>
 </div>
 <script>
 /* Splash: once per visit, skipped when the person asked for less motion. */
@@ -80,7 +91,7 @@ SPLASH = """<div class="splash" id="splash" aria-hidden="true">
   if (seen || window.matchMedia("(prefers-reduced-motion: reduce)").matches) d.classList.add("no-splash");
   else d.classList.add("splashing");
 })();
-</script>""" % ISO
+</script>"""
 
 for file, lang, title, desc, key, head, toc in PAGES:
     body = (BODIES / file.replace("/index.html", ".html")).read_text().replace("{{UPDATED}}", UPDATED).strip()

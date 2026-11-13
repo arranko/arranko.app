@@ -3,33 +3,35 @@
    complete and still. */
 
 :root { --ease: cubic-bezier(0.22, 1, 0.36, 1); --intro: 0.15s; }
-html.splashing { --intro: 1.55s; }
+html.splashing { --intro: 3.05s; }
 
-/* Splash: the five capsules of the "a" arrive one by one, the word follows, then the
-   black curtain lifts. Home page only, once per visit. */
+/* Splash: the approved app splash (final design canvas, "Splash · final", dark), same timings.
+   Home page only, once per visit. */
 .splash { display: none; }
 html.splashing .splash {
   display: flex; position: fixed; inset: 0; z-index: 100; background: #0C0F0A;
   align-items: center; justify-content: center;
-  animation: splash-out 0.6s var(--ease) 1.15s forwards;
+  animation: splash-out 380ms ease-in 2950ms forwards;
 }
-html.splashing body { overflow: hidden; animation: unlock 0s linear 1.6s forwards; }
-.splash-mark { display: flex; align-items: center; gap: 18px; }
-.splash-mark { gap: clamp(10px, 3vw, 18px); }
-.splash-mark svg { width: clamp(56px, 16vw, 92px); height: auto; overflow: visible; }
-.splash-mark span {
-  font-weight: 900; font-style: italic; font-stretch: 62%; font-size: clamp(52px, 15vw, 84px); line-height: 1; color: #F2F3F5;
-  clip-path: inset(0 100% 0 0); animation: word-in 0.55s var(--ease) 0.55s forwards;
-}
-.splash-mark rect { transform-box: fill-box; opacity: 0; animation: capsule-in 0.45s var(--ease) forwards; }
-.splash-mark .c1 { transform-origin: 50% 100%; animation-delay: 0.05s; }
-.splash-mark .c2 { transform-origin: 0 50%; animation-delay: 0.13s; }
-.splash-mark .c3 { transform-origin: 0 50%; animation-delay: 0.21s; }
-.splash-mark .c4 { transform-origin: 0 50%; animation-delay: 0.29s; }
-.splash-mark .c5 { transform-origin: 50% 0; animation-delay: 0.37s; }
-@keyframes capsule-in { from { opacity: 0; transform: scale(0.2); } to { opacity: 1; transform: none; } }
-@keyframes word-in { to { clip-path: inset(0 0 0 0); } }
-@keyframes splash-out { to { transform: translateY(-100%); visibility: hidden; } }
+html.splashing body { overflow: hidden; animation: unlock 0s linear 3.3s forwards; }
+.splash-logo { width: 266px; display: flex; align-items: center; gap: 12px; color: #FFFFFF; }
+.splash .grp { position: relative; flex-shrink: 0; width: 64px; height: 64px; display: block; transform: translate3d(101px, 0, 0); animation: rev 300ms ease-in-out 1000ms both, glide 1150ms cubic-bezier(.3, .7, .2, 1) 1300ms both; }
+.splash .sbox { position: absolute; inset: 0; border-radius: 20px; background: #DBFF00; display: flex; align-items: center; justify-content: center; }
+.splash .sbox svg { width: 38px; height: 33px; }
+.splash .cap { opacity: .18; animation: light 260ms ease-out both; }
+.splash .c4 { animation-delay: 100ms; } .splash .c5 { animation-delay: 250ms; } .splash .c2 { animation-delay: 400ms; } .splash .c1 { animation-delay: 550ms; } .splash .c3 { animation-delay: 700ms; }
+.splash .word { font-weight: 700; font-size: 46px; line-height: 1.1; letter-spacing: -0.01em; white-space: nowrap; }
+.splash .l { display: inline-block; opacity: 0; animation: letter 600ms cubic-bezier(.25, .6, .25, 1) both; }
+.splash .l1 { animation-delay: 1340ms; } .splash .l2 { animation-delay: 1490ms; } .splash .l3 { animation-delay: 1640ms; } .splash .l4 { animation-delay: 1790ms; } .splash .l5 { animation-delay: 1940ms; } .splash .l6 { animation-delay: 2090ms; } .splash .l7 { animation-delay: 2240ms; }
+.splash .streak-at { position: absolute; right: 100%; width: 0; height: 0; }
+.splash .streak { position: absolute; right: 100%; top: 0; height: 3px; border-radius: 2px; width: 36px; background: #DBFF00; opacity: 0; transform-origin: right center; }
+.splash .s1 { animation: streak 620ms ease-out 1320ms both; } .splash .s2 { animation: streak 620ms ease-out 1370ms both; } .splash .s3 { animation: streak 620ms ease-out 1420ms both; }
+@keyframes light { from { opacity: .18; } to { opacity: 1; } }
+@keyframes rev { 0% { transform: translate3d(101px, 0, 0); } 50% { transform: translate3d(108px, 0, 0) scale(.96, 1.03); } 100% { transform: translate3d(101px, 0, 0); } }
+@keyframes glide { from { transform: translate3d(101px, 0, 0); } to { transform: translate3d(0, 0, 0); } }
+@keyframes letter { from { opacity: 0; transform: translate3d(-6px, 4px, 0); } to { opacity: 1; transform: none; } }
+@keyframes streak { 0% { opacity: 0; transform: scaleX(.2); } 30% { opacity: .55; transform: scaleX(1); } 100% { opacity: 0; transform: translate3d(-24px, 0, 0) scaleX(.4); } }
+@keyframes splash-out { to { opacity: 0; transform: scale(1.03); visibility: hidden; } }
 @keyframes unlock { to { overflow: auto; } }
 
 /* Intro: header, headline word by word from a mask, text, buttons, then the estimate card. */
