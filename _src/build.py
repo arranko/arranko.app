@@ -94,6 +94,9 @@ T = {
            "tag": "The AI nutrition app: calories and macros from a photo."},
 }
 INSTAGRAM = "https://www.instagram.com/arrankoapp/"
+SITE = "https://arranko.app"
+# Profiles Google may link to the brand (ARR-162); keep in step with SOCIAL below.
+PROFILES = [INSTAGRAM, "https://www.tiktok.com/@arrankoapp", "https://x.com/arrankoapp"]
 # Social accounts (ARR-159), shown as icons in the footer.
 SOCIAL = "".join(
     '<a href="%s" aria-label="%s"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">%s</svg></a>' % s for s in [
@@ -110,6 +113,19 @@ SOCIAL = "".join(
 def url(key, lang):
     path = PAGES[key][lang][0]
     return "/" + path.replace("index.html", "")
+
+
+def brand_data(lang):
+    """Tells Google the site's name and who runs it (ARR-162), so a search for arranko or
+    arranko.app shows "arranko" with its logo. Only on the home pages, as Google asks."""
+    import json
+    data = {"@context": "https://schema.org", "@graph": [
+        {"@type": "WebSite", "@id": SITE + "/#website", "name": "arranko", "alternateName": ["arranko.app", "arranko app"],
+         "url": SITE + "/", "inLanguage": ["es", "en"], "publisher": {"@id": SITE + "/#organization"}},
+        {"@type": "Organization", "@id": SITE + "/#organization", "name": "arranko", "url": SITE + "/",
+         "logo": SITE + "/apple-touch-icon.png", "email": "support@arranko.app", "sameAs": PROFILES},
+    ]}
+    return '<script type="application/ld+json">%s</script>' % json.dumps(data, ensure_ascii=False)
 
 
 def slug(text):
@@ -210,6 +226,18 @@ for key, langs in PAGES.items():
         menu = "".join('<a href="%s%s">%s</a>' % ("" if is_home else home_url, href, label) for href, label in t["menu"])
         legal = "".join('<a href="%s">%s</a>' % (url(k, lang), label) for k, label in t["legal"])
         alternates = "".join('<link rel="alternate" hreflang="%s" href="https://arranko.app%s">' % (l, url(key, l)) for l in langs)
+        # Search (ARR-162): the page's own address, Spanish as the default language, share data,
+        # and the 404 kept out of Google.
+        if key == "404":
+            seo = '<meta name="robots" content="noindex">'
+        else:
+            seo = ('<link rel="canonical" href="%s%s">' % (SITE, url(key, lang))
+                   + '<link rel="alternate" hreflang="x-default" href="%s%s">' % (SITE, url(key, "es"))
+                   + '<meta property="og:url" content="%s%s">' % (SITE, url(key, lang))
+                   + '<meta property="og:type" content="website"><meta property="og:site_name" content="arranko">'
+                   + '<meta property="og:locale" content="%s">' % ("es_ES" if lang == "es" else "en_GB"))
+            if is_home:
+                seo += brand_data(lang)
         body_class = "home" if is_home else "inner"
         splash = SPLASH if is_home else ""
         page = f"""<!doctype html>
@@ -226,6 +254,7 @@ for key, langs in PAGES.items():
 <meta property="og:image" content="https://arranko.app/og.png">
 <meta name="twitter:card" content="summary_large_image">
 {alternates}
+{seo}
 <link rel="icon" href="/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preload" href="/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -272,3 +301,20 @@ for key, langs in PAGES.items():
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(page)
         print("wrote", out)
+
+# The list of pages for Google (ARR-162), with each page's other language. Written from PAGES,
+# so a new page lands in it by itself. The 404 page is left out.
+entries = []
+for key, langs in PAGES.items():
+    if key == "404":
+        continue
+    links = "".join('<xhtml:link rel="alternate" hreflang="%s" href="%s%s"/>' % (l, SITE, url(key, l)) for l in langs)
+    links += '<xhtml:link rel="alternate" hreflang="x-default" href="%s%s"/>' % (SITE, url(key, "es"))
+    for lang in langs:
+        entries.append("<url><loc>%s%s</loc>%s</url>" % (SITE, url(key, lang), links))
+(OUT / "sitemap.xml").write_text(
+    '<?xml version="1.0" encoding="UTF-8"?>\n'
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
+    + "\n".join(entries) + "\n</urlset>\n")
+(OUT / "robots.txt").write_text("User-agent: *\nAllow: /\n\nSitemap: %s/sitemap.xml\n" % SITE)
+print("wrote sitemap.xml (%d pages) and robots.txt" % len(entries))
