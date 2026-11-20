@@ -17,7 +17,7 @@ def version(name):
 
 BODIES = pathlib.Path(__file__).parent / "bodies"
 DRAFT = False  # True shows a "waiting for approval" banner on the legal pages (founder approved them 13 Nov, ARR-32)
-UPDATED = {"es": "13 de noviembre de 2026", "en": "13 November 2026"}
+UPDATED = {"es": "20 de noviembre de 2026", "en": "20 November 2026"}
 
 ISO = ('<g transform="skewX(-12) translate(22 0)" fill="currentColor">'
        '<rect class="c1" x="48" y="95" width="24" height="65" rx="11"/><rect class="c2" x="78" y="138" width="44" height="22" rx="11"/>'
